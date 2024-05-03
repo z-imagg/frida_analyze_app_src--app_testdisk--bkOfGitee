@@ -41,6 +41,7 @@ apt install -y build-essential autoconf pkg-config automake
 testdisk依赖的库
 ```shell
 apt install -y qtbase5-dev qttools5-dev-tools libncurses5-dev 
+#选 : '6. Asia'  --> '70.Shanghai'
 
 #检查是否有qt库
 pkg-config  --list-all | grep -i qt
