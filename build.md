@@ -1,4 +1,5 @@
 
+#### docker实例
 启动docker实例
 ```shell
 docker run --name testdiskEnv --hostname testdiskEnv --interactive --tty --detach ubuntu:22.04
@@ -16,33 +17,47 @@ docker cp Download/lazygit testdiskEnv:/bin/lazygit
 docker exec --interactive --tty testdiskEnv  /bin/bash
 ```
 
+#### '编译testdisk'所需依赖
+
+
 在docker实例终端执行
 ```shell
 apt update
 
 ```
 
+
+编译工具
+```shell
+apt install -y build-essential autoconf pkg-config automake
+```
+
+testdisk依赖的库
+```shell
+apt install -y qtbase5-dev qttools5-dev-tools libncurses5-dev 
+
+#检查是否有qt库
+pkg-config  --list-all | grep -i qt
+#检查是否有curses库
+pkg-config  --list-all | grep -i curses
+```
+
+#### 编译testdisk
+
+代码仓库git
 ```shell
 apt install -y git
 ```
 
-```shell
-apt install -y build-essential autoconf pkg-config 
-```
-
-```shell
-apt install -y qtbase5-dev
-apt install  -y qttools5-dev-tools
-
-#检查是否有qt库
-pkg-config  --list-all | grep -i qt
-```
-
+拉取testdisk代码
 ```shell
 git clone -b release https://gitee.com/disk_recovery/cgsecurity--testdisk.git
-
 ```
-
+编译testdisk
+```shell
+cd /cgsecurity--testdisk
+bash -x build.sh
+```
 
 参考
 1. http://giteaz:3000/frida_analyze_app_src/app_env/src/commit/534efcedcb81f71f3963480ca74c3ecac73d1269/testdisk.md
