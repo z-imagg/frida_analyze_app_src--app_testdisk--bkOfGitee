@@ -216,21 +216,21 @@ nvm ls-remote
 cd /tmp/
 #制作Miniconda3安装包的数字摘要
 #  数字摘要 == 数字签名
-cat << 'EOF' > Miniconda3-py310_23.10.0-1-Linux-x86_64.sh.md5sum.txt
-cefadd1cacd8e5b9a74b404df1f11016  Miniconda3-py310_23.10.0-1-Linux-x86_64.sh
+cat << 'EOF' > Miniconda3-py310_22.11.1-1-Linux-x86_64.sh.md5sum.txt
+e01420f221a7c4c6cde57d8ae61d24b5  Miniconda3-py310_22.11.1-1-Linux-x86_64.sh
 EOF
 
 #若 数字摘要 验证不过, 则下载
-md5sum --check Miniconda3-py310_23.10.0-1-Linux-x86_64.sh.md5sum.txt || \
-wget  https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-py310_23.10.0-1-Linux-x86_64.sh  --output-document=Miniconda3-py310_23.10.0-1-Linux-x86_64.sh 
+md5sum --check Miniconda3-py310_22.11.1-1-Linux-x86_64.sh.md5sum.txt || \
+wget  https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-py310_22.11.1-1-Linux-x86_64.sh  --output-document=Miniconda3-py310_22.11.1-1-Linux-x86_64.sh 
 
-hm=/app/miniconda3
+hm=/app/Miniconda3-py310_22.11.1-1
 #当不存在activate文件时,
 [[ ! -f $hm/bin/activate ]] && \
 sudo mkdir -p $hm && \
 sudo chown -R $(id -gn).$(whoami) $hm && \
 #安装Miniconda3
-bash Miniconda3-py310_23.10.0-1-Linux-x86_64.sh -b -u -p $hm
+bash Miniconda3-py310_22.11.1-1-Linux-x86_64.sh -b -u -p $hm
 
 ```
 
