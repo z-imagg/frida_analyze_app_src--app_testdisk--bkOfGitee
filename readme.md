@@ -1,16 +1,11 @@
 
 **分析 testdisk/qphotorec 大致流程**
 
-1. 编译
-2. 运行
-3. 监控运行（产生日志）
-4. 日志处理
-5. 日志可视化
-
-# 0. 术语
-
-- 【术语】 qphotorec==带qt的testdisk
-
+1. [编译](http://giteaz:3000/frida_analyze_app_src/app_testdisk#1-%E7%BC%96%E8%AF%91)
+2. [运行](http://giteaz:3000/frida_analyze_app_src/app_testdisk#2-%E8%BF%90%E8%A1%8C)
+3. [监控运行（产生日志）](http://giteaz:3000/frida_analyze_app_src/app_testdisk#3-%E7%9B%91%E6%8E%A7%E8%BF%90%E8%A1%8C%E4%BA%A7%E7%94%9F%E6%97%A5%E5%BF%97)
+4. [日志处理](http://giteaz:3000/frida_analyze_app_src/app_testdisk#4-%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86)
+5. [日志可视化](http://giteaz:3000/frida_analyze_app_src/app_testdisk#5-%E6%97%A5%E5%BF%97%E5%8F%AF%E8%A7%86%E5%8C%96)
 
 # 1. 编译
 
@@ -149,3 +144,8 @@ frida_js生成 函数进出日志、进出时刻点日志,[frids_js/f8d80/fridaJ
 
 # 参考
 1. http://giteaz:3000/frida_analyze_app_src/fridaAnlzAp_env/src/commit/534efcedcb81f71f3963480ca74c3ecac73d1269/testdisk.md
+
+
+# 术语
+
+- 【术语】 qphotorec==带qt的testdisk
