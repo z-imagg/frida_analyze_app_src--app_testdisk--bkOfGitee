@@ -1,16 +1,17 @@
 
-**分析 testdisk/qphotorec 大致流程**
+**依赖安装**
+1. [依赖安装:nodejs](http://giteaz:3000/frida_analyze_app_src/app_testdisk#3-%E4%BE%9D%E8%B5%96%E5%AE%89%E8%A3%85nodejs)
+2. [依赖安装:Miniconda3](http://giteaz:3000/frida_analyze_app_src/app_testdisk#4-%E4%BE%9D%E8%B5%96%E5%AE%89%E8%A3%85miniconda3)
+3. [依赖安装:neo4j](http://giteaz:3000/frida_analyze_app_src/app_testdisk#5-%E4%BE%9D%E8%B5%96%E5%AE%89%E8%A3%85-neo4j)
+4. [依赖安装: cytoscape-unix-3.10.2](http://giteaz:3000/frida_analyze_app_src/app_testdisk#6-%E4%BE%9D%E8%B5%96%E5%AE%89%E8%A3%85-cytoscape-unix-3102)
 
-0. [克隆本仓库](http://giteaz:3000/frida_analyze_app_src/app_testdisk#0-%E5%85%8B%E9%9A%86%E6%9C%AC%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93)
+**分析 testdisk/qphotorec 大致流程**
+0. [克隆本仓库](http://giteaz:3000/frida_analyze_app_src/app_testdisk#0-%E5%85%8B%E9%9A%86%E6%9C%AC%E4%BB%93%E5%BA%93)
 1. [编译](http://giteaz:3000/frida_analyze_app_src/app_testdisk#1-%E7%BC%96%E8%AF%91)
 2. [运行](http://giteaz:3000/frida_analyze_app_src/app_testdisk#2-%E8%BF%90%E8%A1%8C)
-3. 依赖安装:nodejs
-4. 依赖安装:Miniconda3
-5. 依赖安装:neo4j
-6. 依赖安装: cytoscape-unix-3.10.2
-7. [监控运行(产生日志)](http://giteaz:3000/frida_analyze_app_src/app_testdisk#3-%E7%9B%91%E6%8E%A7%E8%BF%90%E8%A1%8C%E4%BA%A7%E7%94%9F%E6%97%A5%E5%BF%97)
-8. [日志处理](http://giteaz:3000/frida_analyze_app_src/app_testdisk#4-%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86)
-9. [日志可视化](http://giteaz:3000/frida_analyze_app_src/app_testdisk#5-%E6%97%A5%E5%BF%97%E5%8F%AF%E8%A7%86%E5%8C%96)
+3. [监控运行(产生日志)](http://giteaz:3000/frida_analyze_app_src/app_testdisk#7-%E7%9B%91%E6%8E%A7%E8%BF%90%E8%A1%8C%E4%BA%A7%E7%94%9F%E6%97%A5%E5%BF%97)
+4. [日志格式转换](http://giteaz:3000/frida_analyze_app_src/app_testdisk#8-%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86)
+5. [日志可视化](http://giteaz:3000/frida_analyze_app_src/app_testdisk#9-%E6%97%A5%E5%BF%97%E5%8F%AF%E8%A7%86%E5%8C%96)
 
 # 0. 克隆本仓库
 
@@ -287,7 +288,7 @@ qphotorec的图形化界面出来后：
   本次监控运行 耗时约 1小时,  产生的日志文件 尺寸约350MB、 行数约100万行
 
 
-# 8. 日志处理
+# 8. 日志格式转换
 
 #### 8.1 克隆代码仓库analyze_by_graph
 
