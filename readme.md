@@ -138,16 +138,18 @@ file src/testdisk  src/qphotorec
 #### 2.2 使用testdisk
 回到宿主机 （理由是 docker实例下图形化界面较麻烦） 
 
-插入事先准备好的磁盘（存储卡，有小尺寸分区）
+插入事先准备好的u盘
 
-用testdisk列出磁盘的各分区
+运行```gnome-disks```，观察u盘的设备文件 比如可能是```/dev/mmcblk0```
+
+用testdisk列出u盘的各分区
 ```
-sudo /fridaAnlzAp/cgsecurity--testdisk/src/testdisk  /list /dev/sda
+sudo /fridaAnlzAp/cgsecurity--testdisk/src/testdisk  /list /dev/mmcblk0
 ```
 
 用qphotorec恢复磁盘的某分区中已删除的文件
 ```shell
-sudo /fridaAnlzAp/cgsecurity--testdisk/src/qphotorec    /dev/sda
+sudo /fridaAnlzAp/cgsecurity--testdisk/src/qphotorec    /dev/mmcblk0
 ```
 
 # 3. 监控运行（产生日志）
