@@ -296,6 +296,22 @@ bash -x /fridaAnlzAp/analyze_by_graph/_main.sh
 ```
 
 # 9. 日志可视化
+
+
+#### 9.1 日志表V_FnCallLog 转为 可视化表V_FnCallLog_Analz  , 以 喂给 cytoscape
+
+
+
+ 对 日志表V_FnCallLog 做过滤的语句 [/fridaAnlzAp/analyze_by_graph/cypher_src/query__链条_宽_宽1深.cypher](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/cypher_src/query__%E9%93%BE%E6%9D%A1_%E5%AE%BD_%E5%AE%BD1%E6%B7%B1.cypher) 需要根据目前日志情况修改， 请 根据 其中提示 修改 其中变量chainBegin_fnCallId 、 chainEnd_fnCallId  、   beginW 、 w1BeginD
+
+执行neo4j的cypher语句 请 浏览器打开 neo4j的web控制台 http://localhost:7474/browser/  ， 输入用户名 neo4j 、密码 123456  
+
+
+修改完后，执行:
+```shell
+bash -x /fridaAnlzAp/analyze_by_graph/visual/_main_create_neo4jTable_for_cytoscape.sh
+```
+
 #### 9.2 可视化 样例
 
 [cytoscape可视化应用程序qphotorec函数调用日志半成品](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/commit/aed2f1cbe736f3f42e6a3a9db3075f50571f2589/visual/cytoscape__testdisk_qphotorec/readme.md)
