@@ -127,6 +127,10 @@ ls -lh  src/testdisk  src/qphotorec
 file src/testdisk  src/qphotorec
 ```
 
+
+以下 2. 在 宿主机 中运行，  （理由是 docker实例下图形化界面较麻烦） 
+
+
 # 2. 运行
 
 #### 2.1 准备磁盘
@@ -135,17 +139,31 @@ file src/testdisk  src/qphotorec
 
 对u盘创建6个分区, [cgsecurity--testdisk.git/u_disk_create.sh](https://gitee.com/disk_recovery/cgsecurity--testdisk/blob/fridaAnlzAp/qphotorec/u_disk_create.sh)
 
-#### 2.2 使用testdisk
-回到宿主机 （理由是 docker实例下图形化界面较麻烦） 
-
 插入事先准备好的u盘
 
 运行```gnome-disks```，观察u盘的设备文件 比如可能是```/dev/mmcblk0```
+
+
+#### 2.2 使用testdisk
+
 
 用testdisk列出u盘的各分区
 ```
 sudo /fridaAnlzAp/cgsecurity--testdisk/src/testdisk  /list /dev/mmcblk0
 ```
+
+理论上 testdisk 也可以被分析， 但 这里暂时不分析 testdisk ，转而 分析 qphotorec
+
+#### 2.3  安装 运行qphotorec所需库
+
+运行qphotorec需要qtbase5-dev
+```shell
+sudo apt install --yes qtbase5-dev
+```
+qttools5-dev-tools ： 编译qphotorec时需要， 但运行qphotorec时不需要
+
+
+#### 2.4 使用qphotorec
 
 用qphotorec恢复磁盘的某分区中已删除的文件
 ```shell
