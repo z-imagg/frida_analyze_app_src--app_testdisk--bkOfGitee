@@ -319,8 +319,15 @@ git clone -b release_qphotorec http://giteaz:3000/frida_analyze_app_src/analyze_
 source /app/Miniconda3-py310_22.11.1-1/bin/activate
 bash -x /fridaAnlzAp/analyze_by_graph/_main.sh
 ```
-
 粗略估计 需要运行1到2个小时
+
+
+当提示 "人工执行 cypher_src/index.cypher 后 按回车则执行遍历器:" 时， 
+
+打开 neo4j的web控制台 http://localhost:7474/browser/   用户名 neo4j 、密码 123456  ,
+
+人工执行脚本 [cypher_src/index.cypher](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/cypher_src/index.cypher) 以创建遍历器所需索引
+
 
 # 5. 日志可视化
 
