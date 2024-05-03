@@ -57,7 +57,8 @@ apt install -y git
 
 拉取testdisk代码
 ```shell
-git clone -b release https://gitee.com/disk_recovery/cgsecurity--testdisk.git
+git clone -b v7.3 https://gitee.com/disk_recovery/cgsecurity--testdisk.git  /app/cgsecurity--testdisk
+#或者 -b release
 ```
 编译testdisk
 ```shell
