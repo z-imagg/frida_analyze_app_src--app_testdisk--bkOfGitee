@@ -12,13 +12,13 @@ docker rm testdiskEnv
 
 启动docker实例
 ```shell
-docker run --name testdiskEnv --hostname testdiskEnv  --volume /app:/app --interactive --tty --detach ubuntu:22.04
+docker run --name testdiskEnv --hostname testdiskEnv  --volume /fridaAnlzAp:/fridaAnlzAp --interactive --tty --detach ubuntu:22.04
 #docker start testdiskEnv
 ```
 
 复制lazygit到docker实例 或 下载lazygit
 ```shell
-docker cp /app/bin/lazygit testdiskEnv:/bin/lazygit
+docker cp /fridaAnlzAp/bin/lazygit testdiskEnv:/bin/lazygit
 # wget https://github.com/jesseduffield/lazygit/releases/download/v0.41.0/lazygit_0.41.0_Linux_x86_64.tar.gz -output-document  /bin/lazygit
 ```
 
@@ -67,17 +67,17 @@ apt install --yes git
 
 拉取testdisk代码
 ```shell
-rm -fr /app/cgsecurity--testdisk
-git clone -b v7.3 https://gitee.com/disk_recovery/cgsecurity--testdisk.git  /app/cgsecurity--testdisk
+rm -fr /fridaAnlzAp/cgsecurity--testdisk
+git clone -b v7.3 https://gitee.com/disk_recovery/cgsecurity--testdisk.git  /fridaAnlzAp/cgsecurity--testdisk
 #或者 -b release
 
 #人工查看testdisk代码仓库
-#cd /app/cgsecurity--testdisk
+#cd /fridaAnlzAp/cgsecurity--testdisk
 #lazygit
 ```
 编译testdisk, 参考[cgsecurity--testdisk.git/tag_release/build.sh](https://gitee.com/disk_recovery/cgsecurity--testdisk/blob/tag_release/build.sh)
 ```shell
-cd /app/cgsecurity--testdisk
+cd /fridaAnlzAp/cgsecurity--testdisk
 
 #删除目录config
 rm -frv config
@@ -110,12 +110,12 @@ file src/testdisk  src/qphotorec
 
 用testdisk列出磁盘的各分区
 ```
-sudo /app/cgsecurity--testdisk/src/testdisk  /list /dev/sda
+sudo /fridaAnlzAp/cgsecurity--testdisk/src/testdisk  /list /dev/sda
 ```
 
 用qphotorec恢复磁盘的某分区中已删除的文件
 ```shell
-sudo /app/cgsecurity--testdisk/src/qphotorec    /dev/sda
+sudo /fridaAnlzAp/cgsecurity--testdisk/src/qphotorec    /dev/sda
 ```
 
 #### frida_js监视testdisk以产生函数调用日志
@@ -124,4 +124,4 @@ sudo /app/cgsecurity--testdisk/src/qphotorec    /dev/sda
 #### analyze_by_graph分析函数调用日志
 
 #### 参考
-1. http://giteaz:3000/frida_analyze_app_src/app_env/src/commit/534efcedcb81f71f3963480ca74c3ecac73d1269/testdisk.md
+1. http://giteaz:3000/frida_analyze_app_src/fridaAnlzAp_env/src/commit/534efcedcb81f71f3963480ca74c3ecac73d1269/testdisk.md
