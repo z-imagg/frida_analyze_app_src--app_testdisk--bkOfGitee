@@ -213,15 +213,16 @@ nvm ls-remote
 参考, [bash-simplify.git/miniconda3install.sh](http://giteaz:3000/bal/bash-simplify/src/branch/release/miniconda3install.sh)
 
 ```shell
+cd /tmp/
 #制作Miniconda3安装包的数字摘要
 #  数字摘要 == 数字签名
-cat << 'EOF' > /tmp/Miniconda3-py310_23.10.0-1-Linux-x86_64.sh.md5sum.txt
+cat << 'EOF' > Miniconda3-py310_23.10.0-1-Linux-x86_64.sh.md5sum.txt
 cefadd1cacd8e5b9a74b404df1f11016  Miniconda3-py310_23.10.0-1-Linux-x86_64.sh
 EOF
 
 #若 数字摘要 验证不过, 则下载
-md5sum --check /tmp/Miniconda3-py310_23.10.0-1-Linux-x86_64.sh.md5sum.txt || \
-wget  https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-py310_23.10.0-1-Linux-x86_64.sh  --output-document=/tmp/Miniconda3-py310_23.10.0-1-Linux-x86_64.sh 
+md5sum --check Miniconda3-py310_23.10.0-1-Linux-x86_64.sh.md5sum.txt || \
+wget  https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-py310_23.10.0-1-Linux-x86_64.sh  --output-document=Miniconda3-py310_23.10.0-1-Linux-x86_64.sh 
 
 hm=/app/miniconda3
 #当不存在activate文件时,
@@ -229,7 +230,7 @@ hm=/app/miniconda3
 sudo mkdir -p $hm && \
 sudo chown -R $(id -gn).$(whoami) $hm && \
 #安装Miniconda3
-bash /tmp/Miniconda3-py310_23.10.0-1-Linux-x86_64.sh -b -u -p $hm
+bash Miniconda3-py310_23.10.0-1-Linux-x86_64.sh -b -u -p $hm
 
 ```
 
