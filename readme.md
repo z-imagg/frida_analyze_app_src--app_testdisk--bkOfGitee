@@ -1,10 +1,10 @@
 目录
 
 **依赖安装**
-1. [依赖安装:nodejs](http://giteaz:3000/frida_analyze_app_src/app_testdisk#3-%E4%BE%9D%E8%B5%96%E5%AE%89%E8%A3%85nodejs)
-2. [依赖安装:Miniconda3](http://giteaz:3000/frida_analyze_app_src/app_testdisk#4-%E4%BE%9D%E8%B5%96%E5%AE%89%E8%A3%85miniconda3)
-3. [依赖安装:neo4j](http://giteaz:3000/frida_analyze_app_src/app_testdisk#5-%E4%BE%9D%E8%B5%96%E5%AE%89%E8%A3%85-neo4j)
-4. [依赖安装: cytoscape-unix-3.10.2](http://giteaz:3000/frida_analyze_app_src/app_testdisk#6-%E4%BE%9D%E8%B5%96%E5%AE%89%E8%A3%85-cytoscape-unix-3102)
+1. [nodejs](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/readme.md#1-%E4%BE%9D%E8%B5%96%E5%AE%89%E8%A3%85nodejs)
+2. [Miniconda3](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/readme.md#2-%E4%BE%9D%E8%B5%96%E5%AE%89%E8%A3%85miniconda3)
+3. [neo4j](http://giteaz:3000/frida_analyze_app_src/app_testdisk#5-%E4%BE%9D%E8%B5%96%E5%AE%89%E8%A3%85-neo4j)
+4. [cytoscape-unix-3.10.2](http://giteaz:3000/frida_analyze_app_src/app_testdisk#6-%E4%BE%9D%E8%B5%96%E5%AE%89%E8%A3%85-cytoscape-unix-3102)
 
 **可视化 testdisk 流程概要**
 0. [克隆本仓库](http://giteaz:3000/frida_analyze_app_src/app_testdisk#0-%E5%85%8B%E9%9A%86%E6%9C%AC%E4%BB%93%E5%BA%93)
@@ -15,7 +15,7 @@
 5. [日志可视化](http://giteaz:3000/frida_analyze_app_src/app_testdisk#9-%E6%97%A5%E5%BF%97%E5%8F%AF%E8%A7%86%E5%8C%96)
 
 # 依赖安装
-## 1. 依赖安装:nodejs
+## 1. nodejs
 
 参考, [wiki.git/nvm_install_nodejs.md.sh](http://giteaz:3000/wiki/wiki/src/branch/main/computer/nvm_install_nodejs.md.sh)
 
@@ -53,7 +53,7 @@ nvm ls-remote
 
 
 
-## 2. 依赖安装:miniconda3
+## 2. miniconda3
 参考, [bash-simplify.git/miniconda3install.sh](http://giteaz:3000/bal/bash-simplify/src/branch/release/miniconda3install.sh)
 
 ```shell
@@ -79,11 +79,11 @@ bash Miniconda3-py310_22.11.1-1-Linux-x86_64.sh -b -u -p $hm
 ```
 
 
-## 3. 依赖安装: neo4j
+## 3. neo4j
 neo4j-4.4.32-community 安装 (以docker运行), [analyze_by_graph.git/release_qphotorec/neo4j-4.4.32-community--env-docker.md](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/neo4j-4.4.32-community--env-docker.md)
 
 
-## 4. 依赖安装: cytoscape-unix-3.10.2
+## 4. cytoscape-unix-3.10.2
 
 ```shell
 bash -x <(curl http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/raw/tag/release_qphotorec/doc/cytoscape_unix_dl_install.sh)
