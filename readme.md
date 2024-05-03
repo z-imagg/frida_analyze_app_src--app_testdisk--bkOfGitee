@@ -9,7 +9,14 @@
 
 # 1. 编译
 
-#### 1.0 编译环境启动
+#### 1.0 编译环境(docker)准备
+
+##### 1.0.a ubuntu22.04下的docker安装
+
+[wiki.git/ubuntu22.04下的docker安装](http://giteaz:3000/wiki/wiki/src/branch/main/computer/ubuntu22.04.3/docker_install_at_ubuntu_22.04.3.md#1-ubuntu2204%E4%B8%8B%E7%9A%84docker%E5%AE%89%E8%A3%85)
+
+##### 1.0.b 编译环境启动
+
 停止、删除 docker实例
 ```shell
 docker stop testdiskEnv
