@@ -170,9 +170,7 @@ qttools5-dev-tools ： 编译qphotorec时需要， 但运行qphotorec时不需�
 sudo /fridaAnlzAp/cgsecurity--testdisk/src/qphotorec    /dev/mmcblk0
 ```
 
-# 3. 监控运行（产生日志）
-
-#### 3.0 安装nodejs
+# 3 安装nodejs
 
 参考, [wiki.git/nvm_install_nodejs.md.sh](http://giteaz:3000/wiki/wiki/src/branch/main/computer/nvm_install_nodejs.md.sh)
 
@@ -209,7 +207,34 @@ nvm ls-remote
 
 重新登陆当前终端，以迫使  ```~/.bashrc``` 中新增的内容被执行
 
-#### 3.1 frida_js监视testdisk以产生函数调用日志
+# 4. 安装miniconda3
+参考, [bash-simplify.git/miniconda3install.sh](http://giteaz:3000/bal/bash-simplify/src/branch/release/miniconda3install.sh)
+
+```shell
+#制作Miniconda3安装包的数字摘要
+#  数字摘要 == 数字签名
+cat << 'EOF' > /tmp/Miniconda3-py310_23.10.0-1-Linux-x86_64.sh.md5sum.txt
+cefadd1cacd8e5b9a74b404df1f11016  Miniconda3-py310_23.10.0-1-Linux-x86_64.sh
+EOF
+
+#若 数字摘要 验证不过, 则下载
+md5sum --check /tmp/Miniconda3-py310_23.10.0-1-Linux-x86_64.sh.md5sum.txt || \
+wget  https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-py310_23.10.0-1-Linux-x86_64.sh  --output-document=/tmp/Miniconda3-py310_23.10.0-1-Linux-x86_64.sh 
+
+hm=/app/miniconda3
+#当不存在activate文件时,
+[[ ! -f $hm/bin/activate ]] && \
+sudo mkdir -p $hm && \
+sudo chown -R $(id -gn).$(whoami) $hm && \
+#安装Miniconda3
+bash Miniconda3-py310_23.10.0-1-Linux-x86_64.sh -b -u -p $hm
+
+```
+
+# 5. 监控运行（产生日志）
+
+
+#### 5.1 frida_js监视testdisk以产生函数调用日志
 
 克隆专供qphotorec的frida_js代码仓库
 ```shell
@@ -221,9 +246,9 @@ frida_js生成 函数进出日志、进出时刻点日志
 bash -x /fridaAnlzAp/frida_js/fridaJs_runApp.sh
 ```
 
-# 4. 日志处理
+# 6. 日志处理
 
-# 5. 日志可视化
+# 7. 日志可视化
 
 #### 5.1 analyze_by_graph分析函数调用日志
 
