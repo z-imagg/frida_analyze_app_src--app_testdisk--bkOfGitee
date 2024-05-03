@@ -61,6 +61,10 @@ apt install -y git
 rm -fr /app/cgsecurity--testdisk
 git clone -b v7.3 https://gitee.com/disk_recovery/cgsecurity--testdisk.git  /app/cgsecurity--testdisk
 #或者 -b release
+
+#人工查看testdisk代码仓库
+#cd /app/cgsecurity--testdisk
+#lazygit
 ```
 编译testdisk
 ```shell
