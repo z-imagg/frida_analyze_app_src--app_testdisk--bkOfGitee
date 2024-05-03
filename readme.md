@@ -346,7 +346,9 @@ MATCH (v:V_Chain__BzWriteDeepth)   RETURN v.root_fnCallId as chainBegin_fnCallId
 ##### 5.1.2 人工尝试不同的 beginW 、 w1BeginD 使得 '点数' 约大几千个
 
 将 末尾的注释```// return count(v) as 点数 ``` 放开,  为了 人工尝试不同的 beginW 、 w1BeginD :
-（以下是拍脑袋的经历，称不上经验）
+
+（以下是拍脑袋的经历，算不上经验）
+
 在目前电脑配置下， 约1万个点， cytoscape能迅速展示出，几万个点会慢一些、几百万个点展示不出来
 
 当'点数'比千还少，可能会出现许多孤立点群，这样也许不是想要的。
