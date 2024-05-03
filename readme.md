@@ -172,6 +172,39 @@ sudo /fridaAnlzAp/cgsecurity--testdisk/src/qphotorec    /dev/mmcblk0
 
 # 3. 监控运行（产生日志）
 
+#### 3.0 安装nodejs
+
+参考, [wiki.git/nvm_install_nodejs.md.sh](http://giteaz:3000/wiki/wiki/src/branch/main/computer/nvm_install_nodejs.md.sh)
+
+```shell
+sudo mkdir /app; sudo chown z.z /app
+
+cd /app
+git clone  https://gitclone.com/github.com/nvm-sh/nvm.git
+#原始仓库为: https://github.com/nvm-sh/nvm.git
+
+#导入nvm等命令
+source /app/nvm/nvm.sh
+
+export NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node/
+export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node/
+#将以上两行  写入 文件 ~/.bashrc 的最末尾   ， 以命令 'gedit ~/.bashrc' 打开该文件,  拖动滚动条 到文件最末尾， 粘贴以上两行
+
+#以nvm命令安装nodejs-v18.15.0
+NVM_NODEJS_ORG_MIRROR=http://nodejs.org/dist nvm install v18.15.0
+
+#nodejs镜像设置为国内淘宝镜像
+npm config -g set registry=https://registry.npmmirror.com 
+
+#查看已安装nodejs
+nvm list
+#查看远端nodejs各版本
+nvm ls-remote
+
+```
+
+重新登陆当前终端，以迫使  ```~/.bashrc``` 中新增的内容被执行
+
 #### 3.1 frida_js监视testdisk以产生函数调用日志
 
 frida_js生成 函数进出日志、进出时刻点日志,[frids_js/f8d80/fridaJs_runApp.sh](http://giteaz:3000/frida_analyze_app_src/frida_js/src/commit/f8d80c10899042cd7d660d93dc5c2b107db01d2f/fridaJs_runApp.sh),  [frids_js/ok/qphotorec_01/fridaJs_runApp.sh](http://giteaz:3000/frida_analyze_app_src/frida_js/src/tag/ok/qphotorec_01/fridaJs_runApp.sh)
