@@ -27,7 +27,7 @@ apt install -y git
 ```
 
 ```shell
-apt install -y build-essential
+apt install -y build-essential autoconf
 ```
 
 ```shell
