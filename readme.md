@@ -179,7 +179,7 @@ sudo /fridaAnlzAp/cgsecurity--testdisk/src/qphotorec    /dev/mmcblk0
 ```shell
 sudo mkdir /app; sudo chown z.z /app
 
-git clone  -b v0.39.7 https://gitclone.com/github.com/nvm-sh/nvm.git /app/nvm
+git clone  -b v0.39.5 https://gitclone.com/github.com/nvm-sh/nvm.git /app/nvm
 #原始仓库为: https://github.com/nvm-sh/nvm.git
 
 #导入nvm等命令
