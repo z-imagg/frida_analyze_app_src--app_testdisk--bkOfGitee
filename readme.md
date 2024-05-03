@@ -184,10 +184,9 @@ git clone  -b v0.39.5 https://gitclone.com/github.com/nvm-sh/nvm.git /app/nvm
 
 #导入nvm等命令
 source /app/nvm/nvm.sh
-
 export NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node/
 export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node/
-#将以上两行  写入 文件 ~/.bashrc 的最末尾   ， 以命令 'gedit ~/.bashrc' 打开该文件,  拖动滚动条 到文件最末尾， 粘贴以上两行
+#将以上三行  写入 文件 ~/.bashrc 的最末尾   ， 以命令 'gedit ~/.bashrc' 打开该文件,  拖动滚动条 到文件最末尾， 粘贴以上两行
 
 #以nvm命令安装nodejs-v18.19.1
 NVM_NODEJS_ORG_MIRROR=http://nodejs.org/dist nvm install v18.19.1
@@ -237,17 +236,26 @@ bash Miniconda3-py310_22.11.1-1-Linux-x86_64.sh -b -u -p $hm
 # 5. 监控运行（产生日志）
 
 
-#### 5.1 frida_js监视testdisk以产生函数调用日志
+#### 5.1 frida_js监视qphotorec以产生函数调用日志
 
 克隆专供qphotorec的frida_js代码仓库
 ```shell
 git clone -b release_qphotorec http://giteaz:3000/frida_analyze_app_src/frida_js.git  /fridaAnlzAp/frida_js
 ```
 
-frida_js生成 函数进出日志、进出时刻点日志
+frida_js监控地运行qphotorec 以生成 函数进出日志、进出时刻点日志
 ```shell
 bash -x /fridaAnlzAp/frida_js/fridaJs_runApp.sh
 ```
+（点一次即可，看起来点了没反应，是因为被frida_js监控了，所以反应很慢，但实际上已点击了）
+
+qphotorec的图形化界面出来后：
+  - 选择最小的分区（这样耗时短）
+  - "Please select a destination to save the recovered files to."  --> 点击 右下角"Browse"  -->  弹出目录选择器,比如选```/home/z``` --> 点击右上角"Open"
+  - 点击 底部"Search"  即开始恢复该分区中已删除的文件  
+  - 进入恢复文件进度条界面， 等待进度条走完， 点击 底部"Quit"
+  - 本次监控运行完毕
+
 
 # 6. 日志处理
 
