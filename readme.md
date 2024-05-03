@@ -345,7 +345,7 @@ MATCH (v:V_Chain__BzWriteDeepth)   RETURN v.root_fnCallId as chainBegin_fnCallId
 
 ##### 5.1.2 人工尝试不同的 beginW 、 w1BeginD 使得 '点数' 约大几千个
 
-将 末尾的注释```// return count(v) as 点数 ``` 放开,  为了 人工尝试不同的 beginW 、 w1BeginD :
+将 末尾的注释```// return count(v) as 点数 ``` 放开, 以 人工尝试不同的 beginW 、 w1BeginD :
 
 （以下是拍脑袋的经历，算不上经验）
 
@@ -355,7 +355,7 @@ MATCH (v:V_Chain__BzWriteDeepth)   RETURN v.root_fnCallId as chainBegin_fnCallId
 
 当 返回的'点数'5千到1万之间  cytoscape能正常显示 且 孤立点群 少， 这也许是想看的。
 
-beginW 从2到 、 w1BeginD [/fridaAnlzAp/analyze_by_graph/cypher_src/query__链条_宽_宽1深.cypher](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/cypher_src/query__%E9%93%BE%E6%9D%A1_%E5%AE%BD_%E5%AE%BD1%E6%B7%B1.cypher)
+开始宽度beginW 从2到不限 、 宽1的开始深度w1BeginD从2到不限 [/fridaAnlzAp/analyze_by_graph/cypher_src/query__链条_宽_宽1深.cypher](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/cypher_src/query__%E9%93%BE%E6%9D%A1_%E5%AE%BD_%E5%AE%BD1%E6%B7%B1.cypher)
 
 #### 5.2 根据过滤条件 将 日志表V_FnCallLog 转为 可视化表V_FnCallLog_Analz
 
