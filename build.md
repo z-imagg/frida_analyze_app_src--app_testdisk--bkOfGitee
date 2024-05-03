@@ -112,5 +112,10 @@ sudo /app/cgsecurity--testdisk/src/testdisk  /list /dev/sda
 sudo /app/cgsecurity--testdisk/src/qphotorec    /dev/sda
 ```
 
+#### frida_js监视testdisk以产生函数调用日志
+
+
+#### analyze_by_graph分析函数调用日志
+
 #### 参考
 1. http://giteaz:3000/frida_analyze_app_src/app_env/src/commit/534efcedcb81f71f3963480ca74c3ecac73d1269/testdisk.md
