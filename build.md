@@ -13,4 +13,8 @@ docker exec --interactive --tty testdiskEnv  /bin/bash
 在docker实例终端执行
 ```shell
 apt update
+
+apt install -y git
+apt install -y qtbase5-dev
+apt install  -y qttools5-dev-tools
 ```
