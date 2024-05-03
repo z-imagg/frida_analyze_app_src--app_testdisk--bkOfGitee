@@ -6,7 +6,7 @@
 3. [neo4j](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#3-neo4j)
 4. [cytoscape-unix-3.10.2](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#4-cytoscape-unix-3102)
 
-**可视化 testdisk 流程概要**
+**可视化 testdisk 步骤概要**
 0. [克隆本仓库](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#0-%E5%85%8B%E9%9A%86%E6%9C%AC%E4%BB%93%E5%BA%93)
 1. [编译](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#1-%E7%BC%96%E8%AF%91)
 2. [运行](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#2-%E8%BF%90%E8%A1%8C)
@@ -97,7 +97,7 @@ bash -x <(curl http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/raw/tag
 
 其中 [github.com/.../cytoscape-unix-3.10.2.tar.gz](https://github.com/cytoscape/cytoscape/releases/download/3.10.2/cytoscape-unix-3.10.2.tar.gz) 国内直接下载很慢，请从别处复制，或爬墙下载
 
-# 可视化 testdisk  流程概要
+# 可视化 testdisk  步骤
 
 ## 0. 克隆本仓库
 
