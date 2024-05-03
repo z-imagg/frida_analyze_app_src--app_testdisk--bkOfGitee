@@ -14,6 +14,10 @@
 4. [日志格式转换](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/readme.md#4-%E6%97%A5%E5%BF%97%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2)
 5. [日志可视化](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/readme.md#5-%E6%97%A5%E5%BF%97%E5%8F%AF%E8%A7%86%E5%8C%96)
 
+
+ [可视化应用程序qphotorec(参考样例)](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/commit/aed2f1cbe736f3f42e6a3a9db3075f50571f2589/visual/cytoscape__testdisk_qphotorec/readme.md)
+
+
 # 依赖安装
 ## 1. nodejs
 
