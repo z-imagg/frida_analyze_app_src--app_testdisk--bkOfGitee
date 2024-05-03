@@ -3,7 +3,7 @@
 [analyze_by_graph.git/aed2f1/visual/cytoscape__testdisk_qphotorec/readme.md](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/commit/aed2f1cbe736f3f42e6a3a9db3075f50571f2589/visual/cytoscape__testdisk_qphotorec/readme.md)
 
 
-#### docker实例
+#### testdisk编译环境（启动docker实例）
 停止、删除 docker实例
 ```shell
 docker stop testdiskEnv
