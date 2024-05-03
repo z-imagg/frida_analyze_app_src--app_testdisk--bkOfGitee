@@ -97,6 +97,12 @@ ls -lh  src/testdisk  src/qphotorec
 file src/testdisk  src/qphotorec
 ```
 
+#### 准备磁盘
+
+请跳过，该u盘已准备好了
+
+对u盘创建6个分区, [cgsecurity--testdisk.git/u_disk_create.sh](https://gitee.com/disk_recovery/cgsecurity--testdisk/blob/fridaAnlzAp/qphotorec/u_disk_create.sh)
+
 #### 使用testdisk
 回到宿主机 （理由是 docker实例下图形化界面较麻烦） 
 
