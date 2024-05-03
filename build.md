@@ -20,7 +20,17 @@ docker exec --interactive --tty testdiskEnv  /bin/bash
 ```shell
 apt update
 
+```
+
+```shell
 apt install -y git
+```
+
+```shell
+apt install -y build-essential
+```
+
+```shell
 apt install -y qtbase5-dev
 apt install  -y qttools5-dev-tools
 ```
