@@ -14,7 +14,7 @@ docker run --name testdiskEnv --hostname testdiskEnv  --volume /app:/app --inter
 
 复制lazygit到docker实例 或 下载lazygit
 ```shell
-docker cp Download/lazygit testdiskEnv:/bin/lazygit
+docker cp /app/bin/lazygit testdiskEnv:/bin/lazygit
 # wget https://github.com/jesseduffield/lazygit/releases/download/v0.41.0/lazygit_0.41.0_Linux_x86_64.tar.gz -o /bin/lazygit
 ```
 
