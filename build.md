@@ -98,9 +98,14 @@ file src/testdisk  src/qphotorec
 
 插入事先准备好的磁盘（存储卡，有小尺寸分区）
 
+用testdisk列出磁盘的各分区
 ```
-#列出分区
 sudo /app/cgsecurity--testdisk/src/testdisk  /list /dev/sda
+```
+
+用qphotorec恢复磁盘的某分区中已删除的文件
+```shell
+sudo /app/cgsecurity--testdisk/src/qphotorec    /dev/sda
 ```
 
 #### 参考
