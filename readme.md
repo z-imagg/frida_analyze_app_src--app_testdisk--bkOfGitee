@@ -324,6 +324,7 @@ bash -x /fridaAnlzAp/analyze_by_graph/_main.sh
 
 # 5. 日志可视化
 
+
 #### 用词解释
 - chainBegin_fnCallId : 链条的开始fnCallId
 - chainBegin_fnCallId : 链条的结束fnCallId
@@ -331,7 +332,17 @@ bash -x /fridaAnlzAp/analyze_by_graph/_main.sh
 - w1BeginD : 宽度大于等于1时 的 开始深度
 
 
-#### 5.1 修改 过滤条件: query__链条_宽_宽1深.cypher
+#### cytoscape展示上限
+（以下是拍脑袋的经历，算不上经验）
+
+在目前电脑配置下， 约1万个点， cytoscape能迅速展示出，几万个点会慢一些、几百万个点展示不出来
+
+当'点数'比千还少，可能会出现许多孤立点群，这样也许不是想要的。
+
+当 '点数'5千到1万之间  cytoscape能正常显示 且 孤立点群 少， 这也许是想看的。
+
+
+#### 5.1 制作恰当的 过滤条件: query__链条_宽_宽1深.cypher
 [/fridaAnlzAp/analyze_by_graph/cypher_src/query__链条_宽_宽1深.cypher](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/cypher_src/query__%E9%93%BE%E6%9D%A1_%E5%AE%BD_%E5%AE%BD1%E6%B7%B1.cypher) 
 
 neo4j的web控制台 http://localhost:7474/browser/  ，  用户名 neo4j 、密码 123456  
@@ -345,17 +356,13 @@ MATCH (v:V_Chain__BzWriteDeepth)   RETURN v.root_fnCallId as chainBegin_fnCallId
 
 ##### 5.1.2 人工尝试不同的 beginW 、 w1BeginD 使得 '点数' 约大几千个
 
+
 将 末尾的注释```// return count(v) as 点数 ``` 放开, 以 人工尝试不同的 beginW 、 w1BeginD :
 
-（以下是拍脑袋的经历，算不上经验）
+开始宽度beginW 从2到不限 、 宽1的开始深度w1BeginD从2到不限
 
-在目前电脑配置下， 约1万个点， cytoscape能迅速展示出，几万个点会慢一些、几百万个点展示不出来
+修改  [/fridaAnlzAp/analyze_by_graph/cypher_src/query__链条_宽_宽1深.cypher](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/cypher_src/query__%E9%93%BE%E6%9D%A1_%E5%AE%BD_%E5%AE%BD1%E6%B7%B1.cypher)  使得 '点数'在5千到1万之间 以接近 cytoscape展示上限
 
-当'点数'比千还少，可能会出现许多孤立点群，这样也许不是想要的。
-
-当 返回的'点数'5千到1万之间  cytoscape能正常显示 且 孤立点群 少， 这也许是想看的。
-
-开始宽度beginW 从2到不限 、 宽1的开始深度w1BeginD从2到不限 [/fridaAnlzAp/analyze_by_graph/cypher_src/query__链条_宽_宽1深.cypher](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/cypher_src/query__%E9%93%BE%E6%9D%A1_%E5%AE%BD_%E5%AE%BD1%E6%B7%B1.cypher)
 
 #### 5.2 根据过滤条件 将 日志表V_FnCallLog 转为 可视化表V_FnCallLog_Analz
 
