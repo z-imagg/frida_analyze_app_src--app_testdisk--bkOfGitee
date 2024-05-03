@@ -1,9 +1,20 @@
-#### 分析testdisk源码 现状展示
 
-[analyze_by_graph.git/aed2f1/visual/cytoscape__testdisk_qphotorec/readme.md](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/commit/aed2f1cbe736f3f42e6a3a9db3075f50571f2589/visual/cytoscape__testdisk_qphotorec/readme.md)
+**分析 testdisk/qphotorec 大致流程**
+
+1. 编译
+2. 运行
+3. 监控运行（产生日志）
+4. 日志处理
+5. 日志可视化
+
+# 0. 术语
+
+- 【术语】 qphotorec==带qt的testdisk
 
 
-#### testdisk编译环境（启动docker实例）
+# 1. 编译
+
+#### 1.0 编译环境启动（docker实例启动）
 停止、删除 docker实例
 ```shell
 docker stop testdiskEnv
@@ -27,10 +38,12 @@ docker cp /fridaAnlzAp/bin/lazygit testdiskEnv:/bin/lazygit
 docker exec --interactive --tty testdiskEnv  /bin/bash
 ```
 
-#### '编译testdisk'所需依赖
+
+1.1 、 1.2 、 1.3 都在docker实例终端执行
+
+#### 1.1 编译环境搭建
 
 
-在docker实例终端执行
 ```shell
 apt update
 
@@ -58,7 +71,7 @@ pkg-config  --list-all | grep -i qt
 pkg-config  --list-all | grep -i curses
 ```
 
-#### 编译testdisk
+#### 1.2 编译testdisk
 
 代码仓库git
 ```shell
@@ -91,19 +104,21 @@ make clean; make distclean  ;  make maintainer-clean ;
 ./compile.sh
 ```
 
-查看编译产物
+#### 1.3 编译产物
 ```shell
 ls -lh  src/testdisk  src/qphotorec
 file src/testdisk  src/qphotorec
 ```
 
-#### 准备磁盘
+# 2. 运行
+
+#### 2.1 准备磁盘
 
 请跳过，该u盘已准备好了
 
 对u盘创建6个分区, [cgsecurity--testdisk.git/u_disk_create.sh](https://gitee.com/disk_recovery/cgsecurity--testdisk/blob/fridaAnlzAp/qphotorec/u_disk_create.sh)
 
-#### 使用testdisk
+#### 2.2 使用testdisk
 回到宿主机 （理由是 docker实例下图形化界面较麻烦） 
 
 插入事先准备好的磁盘（存储卡，有小尺寸分区）
@@ -118,10 +133,19 @@ sudo /fridaAnlzAp/cgsecurity--testdisk/src/testdisk  /list /dev/sda
 sudo /fridaAnlzAp/cgsecurity--testdisk/src/qphotorec    /dev/sda
 ```
 
-#### frida_js监视testdisk以产生函数调用日志
+# 3. 监控运行（产生日志）
 
+#### 3.1 frida_js监视testdisk以产生函数调用日志
 
-#### analyze_by_graph分析函数调用日志
+frida_js生成 函数进出日志、进出时刻点日志,[frids_js/f8d80/fridaJs_runApp.sh](http://giteaz:3000/frida_analyze_app_src/frida_js/src/commit/f8d80c10899042cd7d660d93dc5c2b107db01d2f/fridaJs_runApp.sh),  [frids_js/ok/qphotorec_01/fridaJs_runApp.sh](http://giteaz:3000/frida_analyze_app_src/frida_js/src/tag/ok/qphotorec_01/fridaJs_runApp.sh)
 
-#### 参考
+# 4. 日志处理
+
+# 5. 日志可视化
+
+#### 5.1 analyze_by_graph分析函数调用日志
+
+[cytoscape可视化应用程序qphotorec函数调用日志半成品](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/commit/aed2f1cbe736f3f42e6a3a9db3075f50571f2589/visual/cytoscape__testdisk_qphotorec/readme.md)
+
+# 参考
 1. http://giteaz:3000/frida_analyze_app_src/fridaAnlzAp_env/src/commit/534efcedcb81f71f3963480ca74c3ecac73d1269/testdisk.md
