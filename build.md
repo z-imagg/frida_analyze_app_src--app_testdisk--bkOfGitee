@@ -1,5 +1,11 @@
 
 #### docker实例
+停止、删除 docker实例
+```shell
+docker stop testdiskEnv
+docker rm testdiskEnv
+```
+
 启动docker实例
 ```shell
 docker run --name testdiskEnv --hostname testdiskEnv  --volume /app:/app --interactive --tty --detach ubuntu:22.04
