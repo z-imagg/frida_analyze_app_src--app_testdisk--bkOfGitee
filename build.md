@@ -2,7 +2,7 @@
 #### docker实例
 启动docker实例
 ```shell
-docker run --name testdiskEnv --hostname testdiskEnv --interactive --tty --detach ubuntu:22.04
+docker run --name testdiskEnv --hostname testdiskEnv  --volume /app:/app --interactive --tty --detach ubuntu:22.04
 #docker start testdiskEnv
 ```
 
@@ -75,5 +75,15 @@ ls -lh  src/testdisk  src/qphotorec
 file src/testdisk  src/qphotorec
 ```
 
-参考
+#### 使用testdisk
+回到宿主机 （理由是 docker实例下图形化界面较麻烦） 
+
+插入事先准备好的磁盘（有小尺寸分区）
+
+```
+#列出分区
+/app/cgsecurity--testdisk/src/testdisk /list   hd.img 
+```
+
+#### 参考
 1. http://giteaz:3000/frida_analyze_app_src/app_env/src/commit/534efcedcb81f71f3963480ca74c3ecac73d1269/testdisk.md
