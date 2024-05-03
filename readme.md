@@ -5,7 +5,7 @@
 3. [依赖安装:neo4j](http://giteaz:3000/frida_analyze_app_src/app_testdisk#5-%E4%BE%9D%E8%B5%96%E5%AE%89%E8%A3%85-neo4j)
 4. [依赖安装: cytoscape-unix-3.10.2](http://giteaz:3000/frida_analyze_app_src/app_testdisk#6-%E4%BE%9D%E8%B5%96%E5%AE%89%E8%A3%85-cytoscape-unix-3102)
 
-**分析 testdisk/qphotorec 大致流程**
+**可视化 testdisk 流程概要**
 0. [克隆本仓库](http://giteaz:3000/frida_analyze_app_src/app_testdisk#0-%E5%85%8B%E9%9A%86%E6%9C%AC%E4%BB%93%E5%BA%93)
 1. [编译](http://giteaz:3000/frida_analyze_app_src/app_testdisk#1-%E7%BC%96%E8%AF%91)
 2. [运行](http://giteaz:3000/frida_analyze_app_src/app_testdisk#2-%E8%BF%90%E8%A1%8C)
@@ -13,7 +13,88 @@
 4. [日志格式转换](http://giteaz:3000/frida_analyze_app_src/app_testdisk#8-%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86)
 5. [日志可视化](http://giteaz:3000/frida_analyze_app_src/app_testdisk#9-%E6%97%A5%E5%BF%97%E5%8F%AF%E8%A7%86%E5%8C%96)
 
-# 0. 克隆本仓库
+# 依赖安装
+## 1. 依赖安装:nodejs
+
+参考, [wiki.git/nvm_install_nodejs.md.sh](http://giteaz:3000/wiki/wiki/src/branch/main/computer/nvm_install_nodejs.md.sh)
+
+```shell
+sudo mkdir /app; sudo chown z.z /app
+
+git clone  -b v0.39.5 https://gitclone.com/github.com/nvm-sh/nvm.git /app/nvm
+#原始仓库为: https://github.com/nvm-sh/nvm.git
+
+#导入nvm等命令
+source /app/nvm/nvm.sh
+export NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node/
+export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node/
+#将以上三行  写入 文件 ~/.bashrc 的最末尾   ， 以命令 'gedit ~/.bashrc' 打开该文件,  拖动滚动条 到文件最末尾， 粘贴以上两行
+
+#以nvm命令安装nodejs-v18.19.1
+NVM_NODEJS_ORG_MIRROR=http://nodejs.org/dist nvm install v18.19.1
+#nodejs中有node、npx等命令
+which node 
+#/app/nvm/versions/node/v18.19.1/bin/node
+which npx 
+#/app/nvm/versions/node/v18.19.1/bin/npx
+
+#nodejs镜像设置为国内淘宝镜像
+npm config -g set registry=https://registry.npmmirror.com 
+
+#查看已安装nodejs
+nvm list
+#查看远端nodejs各版本
+nvm ls-remote
+
+```
+
+重新登陆当前终端，以迫使  ```~/.bashrc``` 中新增的内容被执行
+
+
+
+## 2. 依赖安装:miniconda3
+参考, [bash-simplify.git/miniconda3install.sh](http://giteaz:3000/bal/bash-simplify/src/branch/release/miniconda3install.sh)
+
+```shell
+cd /tmp/
+#制作Miniconda3安装包的数字摘要
+#  数字摘要 == 数字签名
+cat << 'EOF' > Miniconda3-py310_22.11.1-1-Linux-x86_64.sh.md5sum.txt
+e01420f221a7c4c6cde57d8ae61d24b5  Miniconda3-py310_22.11.1-1-Linux-x86_64.sh
+EOF
+
+#若 数字摘要 验证不过, 则下载
+md5sum --check Miniconda3-py310_22.11.1-1-Linux-x86_64.sh.md5sum.txt || \
+wget  https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-py310_22.11.1-1-Linux-x86_64.sh  --output-document=Miniconda3-py310_22.11.1-1-Linux-x86_64.sh 
+
+hm=/app/Miniconda3-py310_22.11.1-1
+#当不存在activate文件时,
+[[ ! -f $hm/bin/activate ]] && \
+sudo mkdir -p $hm && \
+sudo chown -R $(id -gn).$(whoami) $hm && \
+#安装Miniconda3
+bash Miniconda3-py310_22.11.1-1-Linux-x86_64.sh -b -u -p $hm
+
+```
+
+
+## 3. 依赖安装: neo4j
+neo4j-4.4.32-community 安装 (以docker运行), [analyze_by_graph.git/release_qphotorec/neo4j-4.4.32-community--env-docker.md](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/neo4j-4.4.32-community--env-docker.md)
+
+
+## 4. 依赖安装: cytoscape-unix-3.10.2
+
+```shell
+bash -x <(curl http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/raw/tag/release_qphotorec/doc/cytoscape_unix_dl_install.sh)
+```
+
+即 http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/doc/cytoscape_unix_dl_install.sh
+
+其中 [github.com/.../cytoscape-unix-3.10.2.tar.gz](https://github.com/cytoscape/cytoscape/releases/download/3.10.2/cytoscape-unix-3.10.2.tar.gz) 国内直接下载很慢，请从别处复制，或爬墙下载
+
+# 可视化 testdisk  流程概要
+
+## 0. 克隆本仓库
 
 添加代码仓库gitea私服域名
 ```shell
@@ -33,7 +114,7 @@ git clone http://giteaz:3000/frida_analyze_app_src/app_testdisk.git /fridaAnlzAp
 
 cd /fridaAnlzAp/app_testdisk;  git  submodule    update --recursive --init 
 ```
-# 1. 编译
+## 1. 编译
 
 #### 1.0 编译环境(docker)准备
 
@@ -144,7 +225,7 @@ file src/testdisk  src/qphotorec
 以下 2. 在 宿主机 中运行，  （理由是 docker实例下图形化界面较麻烦） 
 
 
-# 2. 运行
+## 2. 运行
 
 #### 2.1 准备磁盘
 
@@ -183,92 +264,19 @@ qttools5-dev-tools ： 编译qphotorec时需要， 但运行qphotorec时不需�
 sudo /fridaAnlzAp/cgsecurity--testdisk/src/qphotorec    /dev/mmcblk0
 ```
 
-# 3 依赖安装:nodejs
-
-参考, [wiki.git/nvm_install_nodejs.md.sh](http://giteaz:3000/wiki/wiki/src/branch/main/computer/nvm_install_nodejs.md.sh)
-
-```shell
-sudo mkdir /app; sudo chown z.z /app
-
-git clone  -b v0.39.5 https://gitclone.com/github.com/nvm-sh/nvm.git /app/nvm
-#原始仓库为: https://github.com/nvm-sh/nvm.git
-
-#导入nvm等命令
-source /app/nvm/nvm.sh
-export NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node/
-export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node/
-#将以上三行  写入 文件 ~/.bashrc 的最末尾   ， 以命令 'gedit ~/.bashrc' 打开该文件,  拖动滚动条 到文件最末尾， 粘贴以上两行
-
-#以nvm命令安装nodejs-v18.19.1
-NVM_NODEJS_ORG_MIRROR=http://nodejs.org/dist nvm install v18.19.1
-#nodejs中有node、npx等命令
-which node 
-#/app/nvm/versions/node/v18.19.1/bin/node
-which npx 
-#/app/nvm/versions/node/v18.19.1/bin/npx
-
-#nodejs镜像设置为国内淘宝镜像
-npm config -g set registry=https://registry.npmmirror.com 
-
-#查看已安装nodejs
-nvm list
-#查看远端nodejs各版本
-nvm ls-remote
-
-```
-
-重新登陆当前终端，以迫使  ```~/.bashrc``` 中新增的内容被执行
-
-# 4. 依赖安装:miniconda3
-参考, [bash-simplify.git/miniconda3install.sh](http://giteaz:3000/bal/bash-simplify/src/branch/release/miniconda3install.sh)
-
-```shell
-cd /tmp/
-#制作Miniconda3安装包的数字摘要
-#  数字摘要 == 数字签名
-cat << 'EOF' > Miniconda3-py310_22.11.1-1-Linux-x86_64.sh.md5sum.txt
-e01420f221a7c4c6cde57d8ae61d24b5  Miniconda3-py310_22.11.1-1-Linux-x86_64.sh
-EOF
-
-#若 数字摘要 验证不过, 则下载
-md5sum --check Miniconda3-py310_22.11.1-1-Linux-x86_64.sh.md5sum.txt || \
-wget  https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-py310_22.11.1-1-Linux-x86_64.sh  --output-document=Miniconda3-py310_22.11.1-1-Linux-x86_64.sh 
-
-hm=/app/Miniconda3-py310_22.11.1-1
-#当不存在activate文件时,
-[[ ! -f $hm/bin/activate ]] && \
-sudo mkdir -p $hm && \
-sudo chown -R $(id -gn).$(whoami) $hm && \
-#安装Miniconda3
-bash Miniconda3-py310_22.11.1-1-Linux-x86_64.sh -b -u -p $hm
-
-```
-
-# 5. 依赖安装: neo4j
-neo4j-4.4.32-community 安装 (以docker运行), [analyze_by_graph.git/release_qphotorec/neo4j-4.4.32-community--env-docker.md](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/neo4j-4.4.32-community--env-docker.md)
 
 
-# 6. 依赖安装: cytoscape-unix-3.10.2
-
-```shell
-bash -x <(curl http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/raw/tag/release_qphotorec/doc/cytoscape_unix_dl_install.sh)
-```
-
-即 http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/doc/cytoscape_unix_dl_install.sh
-
-其中 [github.com/.../cytoscape-unix-3.10.2.tar.gz](https://github.com/cytoscape/cytoscape/releases/download/3.10.2/cytoscape-unix-3.10.2.tar.gz) 国内直接下载很慢，请从别处复制，或爬墙下载
-
-# 7. 监控运行（产生日志）
+# 3. 监控运行（产生日志）
 
 
-#### 7.1 克隆代码仓库frida_js
+#### 3.1 克隆代码仓库frida_js
 frida_js： 监控qphotorec
 ```shell
 git clone -b release_qphotorec http://giteaz:3000/frida_analyze_app_src/frida_js.git  /fridaAnlzAp/frida_js
 ```
 
 
-#### 7.2 frida_js监视qphotorec以产生函数调用日志
+#### 3.2 frida_js监视qphotorec以产生函数调用日志
 
 frida_js监控地运行qphotorec 以生成 函数进出日志、进出时刻点日志
 ```shell
@@ -288,9 +296,9 @@ qphotorec的图形化界面出来后：
   本次监控运行 耗时约 1小时,  产生的日志文件 尺寸约350MB、 行数约100万行
 
 
-# 8. 日志格式转换
+# 4. 日志格式转换
 
-#### 8.1 克隆代码仓库analyze_by_graph
+#### 4.1 克隆代码仓库analyze_by_graph
 
 analyze_by_graph：  日志处理
 
@@ -300,7 +308,7 @@ git clone -b release_qphotorec http://giteaz:3000/frida_analyze_app_src/analyze_
 
 
 
-#### 8.2 analyze_by_graph 日志格式转换： 从 *.log文件 到 sqlite3表 到 neo4j表V_FnCallLog
+#### 4.2 analyze_by_graph 日志格式转换： 从 *.log文件 到 sqlite3表 到 neo4j表V_FnCallLog
 
 ```shell
 source /app/Miniconda3-py310_22.11.1-1/bin/activate
@@ -309,33 +317,28 @@ bash -x /fridaAnlzAp/analyze_by_graph/_main.sh
 
 粗略估计 需要运行1到2个小时
 
-# 9. 日志可视化
+# 5. 日志可视化
 
-
-#### 9.1 日志表V_FnCallLog 转为 可视化表V_FnCallLog_Analz  , 以 喂给 cytoscape
-
-##### 用词解释
+#### 用词解释
 - chainBegin_fnCallId : 链条的开始fnCallId
 - chainBegin_fnCallId : 链条的结束fnCallId
 - beginW : 开始宽度
 - w1BeginD : 宽度大于等于1时 的 开始深度
 
 
-
-
-##### 修改 query__链条_宽_宽1深.cypher
+#### 5.1 修改 过滤条件: query__链条_宽_宽1深.cypher
 [/fridaAnlzAp/analyze_by_graph/cypher_src/query__链条_宽_宽1深.cypher](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/cypher_src/query__%E9%93%BE%E6%9D%A1_%E5%AE%BD_%E5%AE%BD1%E6%B7%B1.cypher) 
 
 neo4j的web控制台 http://localhost:7474/browser/  ，  用户名 neo4j 、密码 123456  
 
-###### 填写最长链条的 开始、结束 fnCallId 到 chainBegin_fnCallId 、chainEnd_fnCallId
+##### 填写最长链条的 开始、结束 fnCallId 到 chainBegin_fnCallId 、chainEnd_fnCallId
 ```c++
 // 1. 查看 各 链条 开始、结束 fnCallId， 
 MATCH (v:V_Chain__BzWriteDeepth)   RETURN v.root_fnCallId as chainBegin_fnCallId, v.end_fnCallId as chainEnd_fnCallId 
 ```
 填充 [/fridaAnlzAp/analyze_by_graph/cypher_src/query__链条_宽_宽1深.cypher](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/cypher_src/query__%E9%93%BE%E6%9D%A1_%E5%AE%BD_%E5%AE%BD1%E6%B7%B1.cypher)  中的 chainBegin_fnCallId 为 把最长的链条 的 chainBegin_fnCallId 、 chainEnd_fnCallId 为 把最长的链条 的 chainEnd_fnCallId
 
-###### 人工尝试不同的 beginW 、 w1BeginD 使得 '点数' 到大几千个
+##### 人工尝试不同的 beginW 、 w1BeginD 使得 '点数' 约大几千个
 
 将 末尾的注释```// return count(v) as 点数 ``` 放开,  为了 人工尝试不同的 beginW 、 w1BeginD :
 （以下是拍脑袋的经历，称不上经验）
@@ -347,7 +350,7 @@ MATCH (v:V_Chain__BzWriteDeepth)   RETURN v.root_fnCallId as chainBegin_fnCallId
 
 beginW 从2到 、 w1BeginD [/fridaAnlzAp/analyze_by_graph/cypher_src/query__链条_宽_宽1深.cypher](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/cypher_src/query__%E9%93%BE%E6%9D%A1_%E5%AE%BD_%E5%AE%BD1%E6%B7%B1.cypher)
 
-###### 日志表V_FnCallLog 转为 可视化表V_FnCallLog_Analz
+#### 5.2 根据过滤条件 将 日志表V_FnCallLog 转为 可视化表V_FnCallLog_Analz
 
 修改好 query__链条_宽_宽1深.cypher 后， 执行 _main_create_neo4jTable_for_cytoscape
 ```shell
@@ -355,7 +358,7 @@ bash -x /fridaAnlzAp/analyze_by_graph/visual/_main_create_neo4jTable_for_cytosca
 ```
 即可获得 可视化表V_FnCallLog_Analz
 
-#### 9.2 将neo4j的 点V_FnCallLog_Analz、边E_P2S 可视化到 cytoscape
+#### 5.3 将neo4j的 点V_FnCallLog_Analz、边E_P2S 可视化到 cytoscape
 
  [cytoscape可视化应用程序qphotorec函数调用日志半成品(参考样例)](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/commit/aed2f1cbe736f3f42e6a3a9db3075f50571f2589/visual/cytoscape__testdisk_qphotorec/readme.md)
 
