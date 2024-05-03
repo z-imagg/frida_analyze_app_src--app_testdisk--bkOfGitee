@@ -241,6 +241,12 @@ neo4j-4.4.32-community 安装 (以docker运行), [analyze_by_graph.git/release_q
 
 # 6. 依赖安装: cytoscape-unix-3.10.2
 
+```shell
+bash -x <(curl http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/doc/cytoscape_unix_dl_install.sh)
+```
+
+即 http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/doc/cytoscape_unix_dl_install.sh
+
 # 7. 监控运行（产生日志）
 
 
@@ -262,11 +268,13 @@ qphotorec被frida_js监控地运行 ， 会感觉很卡，这是正常的。 界
 
 qphotorec的图形化界面出来后：
   - 顶部 "Please select a media to recover from" --> 下拉列表中 选择 u盘。  若默认选择的已是u盘，则此步不需要。
-  - 选择最小的分区（这样耗时短）
+  - 选择最小的分区（这样耗时短, 该分区尺寸越30MB）
   - "Please select a destination to save the recovered files to."  --> 点击 右下角"Browse"  -->  弹出目录选择器,比如选```/home/z``` --> 点击右上角"Open"
   - 点击 底部"Search"  即开始恢复该分区中已删除的文件  
   - 进入恢复文件进度条界面， 等待进度条走完， 点击 底部"Quit"
   - 本次监控运行完毕
+
+  本次监控运行 耗时约 1小时,  产生的日志文件 尺寸约350MB、 行数约100万行
 
 
 # 8. 日志处理
