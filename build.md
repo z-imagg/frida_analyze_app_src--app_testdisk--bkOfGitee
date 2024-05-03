@@ -96,11 +96,11 @@ file src/testdisk  src/qphotorec
 #### 使用testdisk
 回到宿主机 （理由是 docker实例下图形化界面较麻烦） 
 
-插入事先准备好的磁盘（有小尺寸分区）
+插入事先准备好的磁盘（存储卡，有小尺寸分区）
 
 ```
 #列出分区
-/app/cgsecurity--testdisk/src/testdisk /list   hd.img 
+sudo /app/cgsecurity--testdisk/src/testdisk  /list /dev/sda
 ```
 
 #### 参考
