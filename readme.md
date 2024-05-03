@@ -247,9 +247,11 @@ frida_js监控地运行qphotorec 以生成 函数进出日志、进出时刻点�
 ```shell
 bash -x /fridaAnlzAp/frida_js/fridaJs_runApp.sh
 ```
-（点一次即可，看起来点了没反应，是因为被frida_js监控了，所以反应很慢，但实际上已点击了）
+
+qphotorec被frida_js监控地运行 ， 会感觉很卡，这是正常的。 界面操作， 卡住时应该等待， 卡住时不要多次点击。
 
 qphotorec的图形化界面出来后：
+  - 顶部 "Please select a media to recover from" --> 下拉列表中 选择 u盘。  若默认选择的已是u盘，则此步不需要。
   - 选择最小的分区（这样耗时短）
   - "Please select a destination to save the recovered files to."  --> 点击 右下角"Browse"  -->  弹出目录选择器,比如选```/home/z``` --> 点击右上角"Open"
   - 点击 底部"Search"  即开始恢复该分区中已删除的文件  
