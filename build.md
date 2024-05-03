@@ -5,6 +5,12 @@ docker run --name testdiskEnv --hostname testdiskEnv --interactive --tty --detac
 #docker start testdiskEnv
 ```
 
+复制lazygit到docker实例 或 下载lazygit
+```shell
+docker cp Download/lazygit testdiskEnv:/bin/lazygit
+# wget https://github.com/jesseduffield/lazygit/releases/download/v0.41.0/lazygit_0.41.0_Linux_x86_64.tar.gz -o /bin/lazygit
+```
+
 进入docker实例终端
 ```
 docker exec --interactive --tty testdiskEnv  /bin/bash
@@ -17,4 +23,9 @@ apt update
 apt install -y git
 apt install -y qtbase5-dev
 apt install  -y qttools5-dev-tools
+```
+
+```shell
+git clone -b tag_release https://gitee.com/disk_recovery/cgsecurity--testdisk.git
+
 ```
