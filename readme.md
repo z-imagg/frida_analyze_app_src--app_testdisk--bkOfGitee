@@ -242,7 +242,7 @@ neo4j-4.4.32-community 安装 (以docker运行), [analyze_by_graph.git/release_q
 # 6. 依赖安装: cytoscape-unix-3.10.2
 
 ```shell
-bash -x <(curl http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/doc/cytoscape_unix_dl_install.sh)
+bash -x <(curl http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/raw/tag/release_qphotorec/doc/cytoscape_unix_dl_install.sh)
 ```
 
 即 http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/doc/cytoscape_unix_dl_install.sh
