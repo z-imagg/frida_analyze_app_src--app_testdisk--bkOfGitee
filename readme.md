@@ -299,32 +299,65 @@ git clone -b release_qphotorec http://giteaz:3000/frida_analyze_app_src/analyze_
 
 
 
-#### 8.2 analyze_by_graph 处理日志
+#### 8.2 analyze_by_graph 日志格式转换： 从 *.log文件 到 sqlite3表 到 neo4j表V_FnCallLog
 
 ```shell
+source /app/Miniconda3-py310_22.11.1-1/bin/activate
 bash -x /fridaAnlzAp/analyze_by_graph/_main.sh
 ```
+
+粗略估计 需要运行1到2个小时
 
 # 9. 日志可视化
 
 
 #### 9.1 日志表V_FnCallLog 转为 可视化表V_FnCallLog_Analz  , 以 喂给 cytoscape
 
+##### 用词解释
+- chainBegin_fnCallId : 链条的开始fnCallId
+- chainBegin_fnCallId : 链条的结束fnCallId
+- beginW : 开始宽度
+- w1BeginD : 宽度大于等于1时 的 开始深度
 
 
- 对 日志表V_FnCallLog 做过滤的语句 [/fridaAnlzAp/analyze_by_graph/cypher_src/query__链条_宽_宽1深.cypher](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/cypher_src/query__%E9%93%BE%E6%9D%A1_%E5%AE%BD_%E5%AE%BD1%E6%B7%B1.cypher) 需要根据目前日志情况修改， 请 根据 其中提示 修改 其中变量chainBegin_fnCallId 、 chainEnd_fnCallId  、   beginW 、 w1BeginD
-
-执行neo4j的cypher语句 请 浏览器打开 neo4j的web控制台 http://localhost:7474/browser/  ， 输入用户名 neo4j 、密码 123456  
 
 
-修改完后，执行:
+##### 修改 query__链条_宽_宽1深.cypher
+[/fridaAnlzAp/analyze_by_graph/cypher_src/query__链条_宽_宽1深.cypher](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/cypher_src/query__%E9%93%BE%E6%9D%A1_%E5%AE%BD_%E5%AE%BD1%E6%B7%B1.cypher) 
+
+neo4j的web控制台 http://localhost:7474/browser/  ，  用户名 neo4j 、密码 123456  
+
+###### 填写最长链条的 开始、结束 fnCallId 到 chainBegin_fnCallId 、chainEnd_fnCallId
+```c++
+// 1. 查看 各 链条 开始、结束 fnCallId， 
+MATCH (v:V_Chain__BzWriteDeepth)   RETURN v.root_fnCallId as chainBegin_fnCallId, v.end_fnCallId as chainEnd_fnCallId 
+```
+填充 [/fridaAnlzAp/analyze_by_graph/cypher_src/query__链条_宽_宽1深.cypher](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/cypher_src/query__%E9%93%BE%E6%9D%A1_%E5%AE%BD_%E5%AE%BD1%E6%B7%B1.cypher)  中的 chainBegin_fnCallId 为 把最长的链条 的 chainBegin_fnCallId 、 chainEnd_fnCallId 为 把最长的链条 的 chainEnd_fnCallId
+
+###### 人工尝试不同的 beginW 、 w1BeginD 使得 '点数' 到大几千个
+
+将 末尾的注释```// return count(v) as 点数 ``` 放开,  为了 人工尝试不同的 beginW 、 w1BeginD :
+（以下是拍脑袋的经历，称不上经验）
+在目前电脑配置下， 约1万个点， cytoscape能迅速展示出，几万个点会慢一些、几百万个点展示不出来
+
+当'点数'比千还少，可能会出现许多孤立点群，这样也许不是想要的。
+
+当 返回的'点数'5千到1万之间  cytoscape能正常显示 且 孤立点群 少， 这也许是想看的。
+
+beginW 从2到 、 w1BeginD [/fridaAnlzAp/analyze_by_graph/cypher_src/query__链条_宽_宽1深.cypher](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/cypher_src/query__%E9%93%BE%E6%9D%A1_%E5%AE%BD_%E5%AE%BD1%E6%B7%B1.cypher)
+
+###### 日志表V_FnCallLog 转为 可视化表V_FnCallLog_Analz
+
+修改好 query__链条_宽_宽1深.cypher 后， 执行 _main_create_neo4jTable_for_cytoscape
 ```shell
 bash -x /fridaAnlzAp/analyze_by_graph/visual/_main_create_neo4jTable_for_cytoscape.sh
 ```
+即可获得 可视化表V_FnCallLog_Analz
 
-#### 9.2 可视化 样例
+#### 9.2 将neo4j的 点V_FnCallLog_Analz、边E_P2S 可视化到 cytoscape
 
-[cytoscape可视化应用程序qphotorec函数调用日志半成品](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/commit/aed2f1cbe736f3f42e6a3a9db3075f50571f2589/visual/cytoscape__testdisk_qphotorec/readme.md)
+ [cytoscape可视化应用程序qphotorec函数调用日志半成品(参考样例)](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/commit/aed2f1cbe736f3f42e6a3a9db3075f50571f2589/visual/cytoscape__testdisk_qphotorec/readme.md)
+
 
 
 # 参考
