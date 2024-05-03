@@ -9,7 +9,7 @@
 
 # 1. 编译
 
-#### 1.0 编译环境启动（docker实例启动）
+#### 1.0 编译环境启动
 停止、删除 docker实例
 ```shell
 docker stop testdiskEnv
