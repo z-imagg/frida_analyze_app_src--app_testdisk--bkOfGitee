@@ -1,0 +1,9 @@
+[submodule "cmd-wrap"]
+	path = cmd-wrap
+	url = http://giteaz:3000/bal/cmd-wrap.git
+[submodule "frida_js"]
+	path = frida_js
+	url = http://giteaz:3000/frida_analyze_app_src/frida_js.git
+[submodule "analyze_by_graph"]
+	path = analyze_by_graph
+	url = http://giteaz:3000/frida_analyze_app_src/analyze_by_graph.git
