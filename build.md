@@ -35,12 +35,17 @@ apt update
 
 编译工具
 ```shell
-apt install -y build-essential autoconf pkg-config automake
+apt install --yes build-essential autoconf pkg-config automake
+```
+
+其他工具
+```shell
+apt install --yes file
 ```
 
 testdisk依赖的库
 ```shell
-apt install -y qtbase5-dev qttools5-dev-tools libncurses5-dev 
+apt install --yes qtbase5-dev qttools5-dev-tools libncurses5-dev 
 #若询问时区，请选 : '6. Asia'  --> '70.Shanghai'
 
 #检查是否有qt库
@@ -53,7 +58,7 @@ pkg-config  --list-all | grep -i curses
 
 代码仓库git
 ```shell
-apt install -y git
+apt install --yes git
 ```
 
 拉取testdisk代码
@@ -68,7 +73,7 @@ git clone -b v7.3 https://gitee.com/disk_recovery/cgsecurity--testdisk.git  /app
 ```
 编译testdisk
 ```shell
-cd /cgsecurity--testdisk
+cd /app/cgsecurity--testdisk
 
 #删除目录config
 rm -frv config
