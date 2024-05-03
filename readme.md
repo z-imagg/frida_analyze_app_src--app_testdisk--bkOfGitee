@@ -211,7 +211,15 @@ nvm ls-remote
 
 #### 3.1 frida_js监视testdisk以产生函数调用日志
 
-frida_js生成 函数进出日志、进出时刻点日志,[frids_js/f8d80/fridaJs_runApp.sh](http://giteaz:3000/frida_analyze_app_src/frida_js/src/commit/f8d80c10899042cd7d660d93dc5c2b107db01d2f/fridaJs_runApp.sh),  [frids_js/ok/qphotorec_01/fridaJs_runApp.sh](http://giteaz:3000/frida_analyze_app_src/frida_js/src/tag/ok/qphotorec_01/fridaJs_runApp.sh)
+克隆专供qphotorec的frida_js代码仓库
+```shell
+git clone -b release_qphotorec http://giteaz:3000/frida_analyze_app_src/frida_js.git  /fridaAnlzAp/frida_js
+```
+
+frida_js生成 函数进出日志、进出时刻点日志
+```shell
+bash -x /fridaAnlzAp/frida_js/fridaJs_runApp.sh
+```
 
 # 4. 日志处理
 
