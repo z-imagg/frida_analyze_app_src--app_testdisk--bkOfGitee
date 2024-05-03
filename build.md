@@ -56,7 +56,23 @@ git clone -b release https://gitee.com/disk_recovery/cgsecurity--testdisk.git
 编译testdisk
 ```shell
 cd /cgsecurity--testdisk
-bash -x build.sh
+
+#删除目录config
+rm -frv config
+#清理目录src内的编译产物
+( cd src; make clean; )
+#清理编译产物
+make clean; make distclean  ;  make maintainer-clean ;
+#生产编译配置(编译配置主要是Makefile)
+./autogen.sh
+#编译
+./compile.sh
+```
+
+查看编译产物
+```shell
+ls -lh  src/testdisk  src/qphotorec
+file src/testdisk  src/qphotorec
 ```
 
 参考
