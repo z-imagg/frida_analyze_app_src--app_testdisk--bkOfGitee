@@ -26,6 +26,6 @@ apt install  -y qttools5-dev-tools
 ```
 
 ```shell
-git clone -b tag_release https://gitee.com/disk_recovery/cgsecurity--testdisk.git
+git clone -b release https://gitee.com/disk_recovery/cgsecurity--testdisk.git
 
 ```
