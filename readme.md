@@ -247,6 +247,8 @@ bash -x <(curl http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/raw/tag
 
 即 http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/doc/cytoscape_unix_dl_install.sh
 
+其中 [github.com/.../cytoscape-unix-3.10.2.tar.gz](https://github.com/cytoscape/cytoscape/releases/download/3.10.2/cytoscape-unix-3.10.2.tar.gz) 国内直接下载很慢，请从别处复制，或爬墙下载
+
 # 7. 监控运行（产生日志）
 
 
