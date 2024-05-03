@@ -374,7 +374,8 @@ bash -x /fridaAnlzAp/analyze_by_graph/visual/_main_create_neo4jTable_for_cytosca
 
 #### 5.3 将neo4j的 点V_FnCallLog_Analz、边E_P2S 可视化到 cytoscape
 
- [cytoscape可视化应用程序qphotorec函数调用日志半成品(参考样例)](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/commit/aed2f1cbe736f3f42e6a3a9db3075f50571f2589/visual/cytoscape__testdisk_qphotorec/readme.md)
+ 请参考此文，[可视化应用程序qphotorec(参考样例)](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/commit/aed2f1cbe736f3f42e6a3a9db3075f50571f2589/visual/cytoscape__testdisk_qphotorec/readme.md)
+
 
 
 
