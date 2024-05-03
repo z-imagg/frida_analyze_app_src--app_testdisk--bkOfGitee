@@ -6,9 +6,11 @@
 2. [运行](http://giteaz:3000/frida_analyze_app_src/app_testdisk#2-%E8%BF%90%E8%A1%8C)
 3. 依赖安装:nodejs
 4. 依赖安装:Miniconda3
-5. [监控运行(产生日志)](http://giteaz:3000/frida_analyze_app_src/app_testdisk#3-%E7%9B%91%E6%8E%A7%E8%BF%90%E8%A1%8C%E4%BA%A7%E7%94%9F%E6%97%A5%E5%BF%97)
-4. [日志处理](http://giteaz:3000/frida_analyze_app_src/app_testdisk#4-%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86)
-5. [日志可视化](http://giteaz:3000/frida_analyze_app_src/app_testdisk#5-%E6%97%A5%E5%BF%97%E5%8F%AF%E8%A7%86%E5%8C%96)
+5. 依赖安装:neo4j
+6. 依赖安装: cytoscape-unix-3.10.2
+7. [监控运行(产生日志)](http://giteaz:3000/frida_analyze_app_src/app_testdisk#3-%E7%9B%91%E6%8E%A7%E8%BF%90%E8%A1%8C%E4%BA%A7%E7%94%9F%E6%97%A5%E5%BF%97)
+8. [日志处理](http://giteaz:3000/frida_analyze_app_src/app_testdisk#4-%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86)
+9. [日志可视化](http://giteaz:3000/frida_analyze_app_src/app_testdisk#5-%E6%97%A5%E5%BF%97%E5%8F%AF%E8%A7%86%E5%8C%96)
 
 # 0. 克隆本仓库
 ```shell
@@ -233,15 +235,23 @@ bash Miniconda3-py310_22.11.1-1-Linux-x86_64.sh -b -u -p $hm
 
 ```
 
-# 5. 监控运行（产生日志）
+# 5. 依赖安装: neo4j
+neo4j-4.4.32-community 安装 (以docker运行), [analyze_by_graph.git/release_qphotorec/neo4j-4.4.32-community--env-docker.md](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/neo4j-4.4.32-community--env-docker.md)
 
 
-#### 5.1 frida_js监视qphotorec以产生函数调用日志
+# 6. 依赖安装: cytoscape-unix-3.10.2
 
-克隆专供qphotorec的frida_js代码仓库
+# 7. 监控运行（产生日志）
+
+
+#### 7.1 克隆代码仓库frida_js
+frida_js： 监控qphotorec
 ```shell
 git clone -b release_qphotorec http://giteaz:3000/frida_analyze_app_src/frida_js.git  /fridaAnlzAp/frida_js
 ```
+
+
+#### 7.2 frida_js监视qphotorec以产生函数调用日志
 
 frida_js监控地运行qphotorec 以生成 函数进出日志、进出时刻点日志
 ```shell
@@ -259,13 +269,29 @@ qphotorec的图形化界面出来后：
   - 本次监控运行完毕
 
 
-# 6. 日志处理
+# 8. 日志处理
 
-# 7. 日志可视化
+#### 8.1 克隆代码仓库analyze_by_graph
 
-#### 5.1 analyze_by_graph分析函数调用日志
+analyze_by_graph：  日志处理
+
+```shell
+git clone -b release_qphotorec http://giteaz:3000/frida_analyze_app_src/analyze_by_graph.git  /fridaAnlzAp/analyze_by_graph
+```
+
+
+
+#### 8.2 analyze_by_graph 处理日志
+
+```shell
+bash -x /fridaAnlzAp/analyze_by_graph/_main.sh
+```
+
+# 9. 日志可视化
+#### 9.2 可视化 样例
 
 [cytoscape可视化应用程序qphotorec函数调用日志半成品](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/commit/aed2f1cbe736f3f42e6a3a9db3075f50571f2589/visual/cytoscape__testdisk_qphotorec/readme.md)
+
 
 # 参考
 1. http://giteaz:3000/frida_analyze_app_src/fridaAnlzAp_env/src/commit/534efcedcb81f71f3963480ca74c3ecac73d1269/testdisk.md
