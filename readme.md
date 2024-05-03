@@ -13,10 +13,18 @@
 9. [日志可视化](http://giteaz:3000/frida_analyze_app_src/app_testdisk#5-%E6%97%A5%E5%BF%97%E5%8F%AF%E8%A7%86%E5%8C%96)
 
 # 0. 克隆本仓库
+
+添加代码仓库gitea私服域名
+```shell
+echo '10.0.4.9 westgw giteaz g'|sudo tee -a /etc/hosts
+```
+
+安装git
 ```shell
 sudo apt install --yes git
 ```
 
+克隆仓库app_testdisk
 ```shell
 sudo mkdir /fridaAnlzAp
 sudo chown z.z /fridaAnlzAp
