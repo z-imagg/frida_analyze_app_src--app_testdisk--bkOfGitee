@@ -336,14 +336,14 @@ bash -x /fridaAnlzAp/analyze_by_graph/_main.sh
 
 neo4j的web控制台 http://localhost:7474/browser/  ，  用户名 neo4j 、密码 123456  
 
-##### 填写最长链条的 开始、结束 fnCallId 到 chainBegin_fnCallId 、chainEnd_fnCallId
+##### 5.1.1 填写最长链条的 开始、结束 fnCallId 到 chainBegin_fnCallId 、chainEnd_fnCallId
 ```c++
 // 1. 查看 各 链条 开始、结束 fnCallId， 
 MATCH (v:V_Chain__BzWriteDeepth)   RETURN v.root_fnCallId as chainBegin_fnCallId, v.end_fnCallId as chainEnd_fnCallId 
 ```
 填充 [/fridaAnlzAp/analyze_by_graph/cypher_src/query__链条_宽_宽1深.cypher](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/cypher_src/query__%E9%93%BE%E6%9D%A1_%E5%AE%BD_%E5%AE%BD1%E6%B7%B1.cypher)  中的 chainBegin_fnCallId 为 把最长的链条 的 chainBegin_fnCallId 、 chainEnd_fnCallId 为 把最长的链条 的 chainEnd_fnCallId
 
-##### 人工尝试不同的 beginW 、 w1BeginD 使得 '点数' 约大几千个
+##### 5.1.2 人工尝试不同的 beginW 、 w1BeginD 使得 '点数' 约大几千个
 
 将 末尾的注释```// return count(v) as 点数 ``` 放开,  为了 人工尝试不同的 beginW 、 w1BeginD :
 （以下是拍脑袋的经历，称不上经验）
