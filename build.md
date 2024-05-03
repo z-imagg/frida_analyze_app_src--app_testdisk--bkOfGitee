@@ -75,7 +75,7 @@ git clone -b v7.3 https://gitee.com/disk_recovery/cgsecurity--testdisk.git  /app
 #cd /app/cgsecurity--testdisk
 #lazygit
 ```
-编译testdisk
+编译testdisk, 参考[cgsecurity--testdisk.git/tag_release/build.sh](https://gitee.com/disk_recovery/cgsecurity--testdisk/blob/tag_release/build.sh)
 ```shell
 cd /app/cgsecurity--testdisk
 
