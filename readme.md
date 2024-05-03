@@ -1,18 +1,18 @@
 目录
 
 **依赖安装**
-1. [nodejs](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/readme.md#1-nodejs)
-2. [Miniconda3](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/readme.md#2-miniconda3)
-3. [neo4j](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/readme.md#3-neo4j)
-4. [cytoscape-unix-3.10.2](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/readme.md#4-cytoscape-unix-3102)
+1. [nodejs](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#1-nodejs)
+2. [Miniconda3](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#2-miniconda3)
+3. [neo4j](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#3-neo4j)
+4. [cytoscape-unix-3.10.2](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#4-cytoscape-unix-3102)
 
 **可视化 testdisk 流程概要**
-0. [克隆本仓库](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/readme.md#0-%E5%85%8B%E9%9A%86%E6%9C%AC%E4%BB%93%E5%BA%93)
-1. [编译](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/readme.md#1-%E7%BC%96%E8%AF%91)
-2. [运行](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/readme.md#2-%E8%BF%90%E8%A1%8C)
-3. [监控运行(产生日志)](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/readme.md#3-%E7%9B%91%E6%8E%A7%E8%BF%90%E8%A1%8C%E4%BA%A7%E7%94%9F%E6%97%A5%E5%BF%97)
-4. [日志格式转换](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/readme.md#4-%E6%97%A5%E5%BF%97%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2)
-5. [日志可视化](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/readme.md#5-%E6%97%A5%E5%BF%97%E5%8F%AF%E8%A7%86%E5%8C%96)
+0. [克隆本仓库](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#0-%E5%85%8B%E9%9A%86%E6%9C%AC%E4%BB%93%E5%BA%93)
+1. [编译](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#1-%E7%BC%96%E8%AF%91)
+2. [运行](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#2-%E8%BF%90%E8%A1%8C)
+3. [监控运行(产生日志)](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#3-%E7%9B%91%E6%8E%A7%E8%BF%90%E8%A1%8C%E4%BA%A7%E7%94%9F%E6%97%A5%E5%BF%97)
+4. [日志格式转换](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#4-%E6%97%A5%E5%BF%97%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2)
+5. [日志可视化](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#5-%E6%97%A5%E5%BF%97%E5%8F%AF%E8%A7%86%E5%8C%96)
 
 
  [可视化应用程序qphotorec(参考样例)](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/commit/aed2f1cbe736f3f42e6a3a9db3075f50571f2589/visual/cytoscape__testdisk_qphotorec/readme.md)
