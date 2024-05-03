@@ -42,3 +42,7 @@ pkg-config  --list-all | grep -i qt
 git clone -b release https://gitee.com/disk_recovery/cgsecurity--testdisk.git
 
 ```
+
+
+参考
+1. http://giteaz:3000/frida_analyze_app_src/app_env/src/commit/534efcedcb81f71f3963480ca74c3ecac73d1269/testdisk.md
