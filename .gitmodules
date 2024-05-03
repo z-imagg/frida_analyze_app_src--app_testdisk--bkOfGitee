@@ -7,3 +7,6 @@
 [submodule "analyze_by_graph"]
 	path = analyze_by_graph
 	url = http://giteaz:3000/frida_analyze_app_src/analyze_by_graph.git
+[submodule "app/testdisk"]
+	path = app/testdisk
+	url = https://gitee.com/disk_recovery/cgsecurity--testdisk.git
