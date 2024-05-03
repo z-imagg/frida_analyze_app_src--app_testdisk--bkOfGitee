@@ -27,12 +27,15 @@ apt install -y git
 ```
 
 ```shell
-apt install -y build-essential autoconf
+apt install -y build-essential autoconf pkg-config 
 ```
 
 ```shell
 apt install -y qtbase5-dev
 apt install  -y qttools5-dev-tools
+
+#检查是否有qt库
+pkg-config  --list-all | grep -i qt
 ```
 
 ```shell
