@@ -189,8 +189,13 @@ export NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node/
 export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node/
 #将以上两行  写入 文件 ~/.bashrc 的最末尾   ， 以命令 'gedit ~/.bashrc' 打开该文件,  拖动滚动条 到文件最末尾， 粘贴以上两行
 
-#以nvm命令安装nodejs-v18.15.0
-NVM_NODEJS_ORG_MIRROR=http://nodejs.org/dist nvm install v18.15.0
+#以nvm命令安装nodejs-v18.19.1
+NVM_NODEJS_ORG_MIRROR=http://nodejs.org/dist nvm install v18.19.1
+#nodejs中有node、npx等命令
+which node 
+#/app/nvm/versions/node/v18.19.1/bin/node
+which npx 
+#/app/nvm/versions/node/v18.19.1/bin/npx
 
 #nodejs镜像设置为国内淘宝镜像
 npm config -g set registry=https://registry.npmmirror.com 
