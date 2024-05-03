@@ -229,7 +229,7 @@ hm=/app/miniconda3
 sudo mkdir -p $hm && \
 sudo chown -R $(id -gn).$(whoami) $hm && \
 #安装Miniconda3
-bash Miniconda3-py310_23.10.0-1-Linux-x86_64.sh -b -u -p $hm
+bash /tmp/Miniconda3-py310_23.10.0-1-Linux-x86_64.sh -b -u -p $hm
 
 ```
 
