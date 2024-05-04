@@ -19,6 +19,9 @@
 
 
 # 依赖安装
+```shell
+sudo apt install -y git
+```
 ## 1. nodejs
 
 参考, [wiki.git/nvm_install_nodejs.md.sh](http://giteaz:3000/wiki/wiki/src/branch/main/computer/nvm_install_nodejs.md.sh)
