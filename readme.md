@@ -164,7 +164,7 @@ docker exec --interactive --tty testdiskEnv  /bin/bash
 ```
 
 
-1.1 、 1.2 、 1.3 都在docker实例终端执行
+**1.1 、 1.2 、 1.3 都在docker实例终端执行**
 
 #### 1.1 编译环境搭建
 
@@ -236,7 +236,7 @@ file src/testdisk  src/qphotorec
 ```
 
 
-以下 2. 在 宿主机 中运行，  （理由是 docker实例下图形化界面较麻烦） 
+**以下 2. 在 宿主机 中运行**，  （理由是 docker实例下图形化界面较麻烦） 
 
 
 ## 2. 运行
