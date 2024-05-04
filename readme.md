@@ -136,6 +136,8 @@ cd /fridaAnlzAp/app_testdisk;  git  submodule    update --recursive --init
 
 #### 1.0 编译环境(docker)启动
 
+**本节终端无特别说明的是宿主机终端** 
+
 停止、删除 docker实例
 ```shell
 docker stop testdiskEnv
@@ -163,11 +165,9 @@ docker exec testdiskEnv tar -zxf /root/lazygit_0.41.0_Linux_x86_64.tar.gz -C /us
 docker exec --interactive --tty testdiskEnv  /bin/bash
 ```
 
-
-**1.1 、 1.2 、 1.3 都在docker实例终端执行**
-
 #### 1.1 编译环境搭建
 
+**本节终端无特别说明的是为docker实例testdiskEnv的终端** 
 
 ```shell
 apt update
@@ -203,6 +203,8 @@ pkg-config  --list-all | grep -i curses
 
 #### 1.2 编译testdisk
 
+**本节终端无特别说明的是为docker实例testdiskEnv的终端** 
+
 拉取testdisk代码
 ```shell
 rm -fr /fridaAnlzAp/cgsecurity--testdisk
@@ -230,16 +232,21 @@ make clean; make distclean  ;  make maintainer-clean ;
 ```
 
 #### 1.3 编译产物
+
+**本节终端无特别说明的是为docker实例testdiskEnv的终端** 
+
 ```shell
 ls -lh  src/testdisk  src/qphotorec
 file src/testdisk  src/qphotorec
 ```
 
 
-**以下 2. 在 宿主机 中运行**，  （理由是 docker实例下图形化界面较麻烦） 
+
 
 
 ## 2. 运行
+
+**本节终端无特别说明的是宿主机终端** ，  （理由是 docker实例下图形化界面较麻烦） 
 
 #### 2.1 准备磁盘
 
@@ -282,6 +289,7 @@ sudo /fridaAnlzAp/cgsecurity--testdisk/src/qphotorec    /dev/mmcblk0
 
 # 3. 监控运行（产生日志）
 
+**本节终端无特别说明的是宿主机终端** 
 
 #### 3.1 克隆代码仓库frida_js
 frida_js： 监控qphotorec
@@ -312,6 +320,8 @@ qphotorec的图形化界面出来后：
 
 # 4. 日志格式转换
 
+**本节终端无特别说明的是宿主机终端** 
+
 #### 4.1 克隆代码仓库analyze_by_graph
 
 analyze_by_graph：  日志处理
@@ -340,6 +350,7 @@ bash -x /fridaAnlzAp/analyze_by_graph/_main.sh
 
 # 5. 日志可视化
 
+**本节终端无特别说明的是宿主机终端** 
 
 #### 用词解释
 - chainBegin_fnCallId : 链条的开始fnCallId
