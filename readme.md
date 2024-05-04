@@ -1,6 +1,7 @@
 目录
 
 **依赖安装**
+0. [basic](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#1-basic)
 1. [nodejs](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#1-nodejs)
 2. [Miniconda3](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#2-miniconda3)
 3. [neo4j](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#3-neo4j)
@@ -19,6 +20,9 @@
 
 
 # 依赖安装
+
+## 0. basic
+
 ```shell
 sudo apt install -y git
 ```
