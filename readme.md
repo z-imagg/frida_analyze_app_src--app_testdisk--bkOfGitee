@@ -151,9 +151,11 @@ docker run --name testdiskEnv --hostname testdiskEnv  --volume /fridaAnlzAp:/fri
 下载lazygit 并 复制lazygit到docker实例
 ```shell
 #国内访问一般github很慢
-wget https://github.com/jesseduffield/lazygit/releases/download/v0.41.0/lazygit_0.41.0_Linux_x86_64.tar.gz -output-document  ~/lazygit
+wget https://github.com/jesseduffield/lazygit/releases/download/v0.41.0/lazygit_0.41.0_Linux_x86_64.tar.gz -output-document  /app/pack/lazygit_0.41.0_Linux_x86_64.tar.gz
 
-docker cp ~/lazygit testdiskEnv:/bin/lazygit
+docker cp /app/pack/lazygit_0.41.0_Linux_x86_64.tar.gz testdiskEnv:/root/lazygit_0.41.0_Linux_x86_64.tar.gz
+
+docker exec testdiskEnv tar -zxf /root/lazygit_0.41.0_Linux_x86_64.tar.gz -C /usr/bin/
 ```
 
 进入docker实例终端
