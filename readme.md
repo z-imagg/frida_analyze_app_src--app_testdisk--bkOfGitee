@@ -185,6 +185,11 @@ apt install --yes build-essential autoconf pkg-config automake
 apt install --yes file
 ```
 
+代码仓库工具git
+```shell
+apt install --yes git
+```
+
 testdisk依赖的库
 ```shell
 apt install --yes qtbase5-dev qttools5-dev-tools libncurses5-dev 
