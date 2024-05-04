@@ -1,12 +1,15 @@
 目录
 
 **依赖安装**
+
+0. [basic](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#1-basic)
 1. [nodejs](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#1-nodejs)
 2. [Miniconda3](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#2-miniconda3)
 3. [neo4j](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#3-neo4j)
 4. [cytoscape-unix-3.10.2](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#4-cytoscape-unix-3102)
 
 **可视化 testdisk 步骤概要**
+
 0. [克隆本仓库](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#0-%E5%85%8B%E9%9A%86%E6%9C%AC%E4%BB%93%E5%BA%93)
 1. [编译](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#1-%E7%BC%96%E8%AF%91)
 2. [运行](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#2-%E8%BF%90%E8%A1%8C)
@@ -19,6 +22,12 @@
 
 
 # 依赖安装
+
+## 0. basic
+
+```shell
+sudo apt install -y git
+```
 ## 1. nodejs
 
 参考, [wiki.git/nvm_install_nodejs.md.sh](http://giteaz:3000/wiki/wiki/src/branch/main/computer/nvm_install_nodejs.md.sh)
@@ -319,8 +328,15 @@ git clone -b release_qphotorec http://giteaz:3000/frida_analyze_app_src/analyze_
 source /app/Miniconda3-py310_22.11.1-1/bin/activate
 bash -x /fridaAnlzAp/analyze_by_graph/_main.sh
 ```
-
 粗略估计 需要运行1到2个小时
+
+
+当提示 "人工执行 cypher_src/index.cypher 后 按回车则执行遍历器:" 时， 
+
+打开 neo4j的web控制台 http://localhost:7474/browser/   用户名 neo4j 、密码 123456  ,
+
+人工执行脚本 [cypher_src/index.cypher](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/cypher_src/index.cypher) 以创建遍历器所需索引
+
 
 # 5. 日志可视化
 
