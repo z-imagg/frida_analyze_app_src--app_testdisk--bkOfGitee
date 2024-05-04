@@ -32,7 +32,7 @@
 echo '10.0.4.9 westgw giteaz g'|sudo tee -a /etc/hosts
 ```
 
-安装git
+安装 代码仓库工具git
 ```shell
 sudo apt install --yes git
 ```
@@ -197,11 +197,6 @@ pkg-config  --list-all | grep -i curses
 ```
 
 #### 1.2 编译testdisk
-
-代码仓库git
-```shell
-apt install --yes git
-```
 
 拉取testdisk代码
 ```shell
