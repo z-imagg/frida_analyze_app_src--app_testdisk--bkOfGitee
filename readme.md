@@ -5,9 +5,9 @@
 0. [basic](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#1-basic)
 1. [nodejs](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#1-nodejs)
 2. [Miniconda3](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#2-miniconda3)
-3. [neo4j](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#3-neo4j)
-4. [cytoscape-unix-3.10.2](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#4-cytoscape-unix-3102)
-5. [docker](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#5-docker)
+3. [docker](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#3-docker)
+4. [neo4j](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#4-neo4j)
+5. [cytoscape-unix-3.10.2](http://giteaz:3000/frida_analyze_app_src/app_testdisk/src/branch/main/#5-cytoscape-unix-3102)
 
 **可视化 testdisk 步骤概要**
 
@@ -92,12 +92,15 @@ bash Miniconda3-py310_22.11.1-1-Linux-x86_64.sh -b -u -p $hm
 
 ```
 
+## 3. docker
 
-## 3. neo4j
+[wiki.git/ubuntu22.04下的docker安装](http://giteaz:3000/wiki/wiki/src/branch/main/computer/ubuntu22.04.3/docker_install_at_ubuntu_22.04.3.md#1-ubuntu2204%E4%B8%8B%E7%9A%84docker%E5%AE%89%E8%A3%85)
+
+## 4. neo4j
 neo4j-4.4.32-community 安装 (以docker运行), [analyze_by_graph.git/release_qphotorec/neo4j-4.4.32-community--env-docker.md](http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/neo4j-4.4.32-community--env-docker.md)
 
 
-## 4. cytoscape-unix-3.10.2
+## 5. cytoscape-unix-3.10.2
 
 ```shell
 bash -x <(curl http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/raw/tag/release_qphotorec/doc/cytoscape_unix_dl_install.sh)
@@ -106,11 +109,6 @@ bash -x <(curl http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/raw/tag
 即 http://giteaz:3000/frida_analyze_app_src/analyze_by_graph/src/tag/release_qphotorec/doc/cytoscape_unix_dl_install.sh
 
 其中 [github.com/.../cytoscape-unix-3.10.2.tar.gz](https://github.com/cytoscape/cytoscape/releases/download/3.10.2/cytoscape-unix-3.10.2.tar.gz) 国内直接下载很慢，请从别处复制，或爬墙下载
-
-
-## 5. docker
-
-[wiki.git/ubuntu22.04下的docker安装](http://giteaz:3000/wiki/wiki/src/branch/main/computer/ubuntu22.04.3/docker_install_at_ubuntu_22.04.3.md#1-ubuntu2204%E4%B8%8B%E7%9A%84docker%E5%AE%89%E8%A3%85)
 
 
 # 可视化 testdisk  步骤
